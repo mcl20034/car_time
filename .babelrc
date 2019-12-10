@@ -2,9 +2,9 @@
   "presets": [
     "@babel/preset-env",
     "@babel/preset-react",
-    "babel-preset-mobx"
+    "babel-preset-mobx",
   ],
   "plugins": [
-    ["@babel/transform-runtime"]
+    ["@babel/plugin-transform-runtime"],
   ]
 }

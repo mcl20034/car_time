@@ -2,11 +2,9 @@ const path = require('path');
 const fs = require('fs');
 const program = require('commander');
 const pkg = require("./package.json");
-const mock2easy = require("@nat/freedom-middleware-mock2easy");
-const webpackBuild = require("@nat/freedom-middleware-webpack4");
+const webpackBuild = require("./webpackindex");
 const proxyMiddleware = require('http-proxy-middleware');
 const app = require("express")();
-const colors = require("colors");
 const serverStatic = require("serve-static");
 // const esLintMiddleware = require("./eslint/index.js");
 const projectName = pkg.name;
@@ -73,9 +71,6 @@ function dev() {
   (async function () {
     await webpackBuild(params);
   })();
-  mock2easy({
-    port: 8080
-  });
 }
 
 function runServe() {
@@ -95,9 +90,6 @@ function runServe() {
     console.log(listenStr.bold.cyan);
     app.listen(8888);
   })();
-  mock2easy({
-    port: 8181
-  });
 }
 
 

@@ -13,9 +13,6 @@ module.exports = {
     }),
     require('cssnano')({
       safe: true
-    }),
-    require('postcss-write-svg')({
-      utf8: false
     })
   ]
 }
