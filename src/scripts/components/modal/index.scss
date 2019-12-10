@@ -1,0 +1,274 @@
+@import "../../../css/_base.scss";
+
+.modal-parent {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1000;
+  background-color: rgba(30, 30, 30, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  touch-action: none;
+}
+.slot-modal-parent {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1000;
+  background-color: rgba(30, 30, 30, 0.5);
+  display: flex;
+  justify-content: flex-end;
+  touch-action: none;
+  flex-direction: column;
+}
+.modal-hidden {
+  width: 0px;
+  height: 0px;
+  overflow: hidden;
+}
+.modal-child {
+  width: pem(600);
+  background-color: white;
+  border-radius: pem(24);
+  display: flex;
+  flex-direction: column;
+  padding-top: pem(32);
+  align-items: center;
+  padding-bottom: pem(24);
+  touch-action: none;
+}
+.slot-modal-child {
+  width: 100%;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+}
+.slot-modal-scroll {
+  width: 100%;
+  max-height: pem(707);
+  display: flex;
+  flex-direction: column;
+  overflow: scroll;
+}
+.modal-title {
+  @include fsp(40);
+  color: rgba(30, 30, 30, 1);
+  margin-top: pem(24);
+  font-weight: 500;
+}
+.modal-content {
+  @include fsp(32);
+  color: rgba(30, 30, 30, 1);
+  margin-top: pem(24);
+  max-width: pem(520);
+  line-height: pem(48);
+  max-height: pem(580);
+  overflow: scroll;
+}
+.modal-button {
+  margin-top: pem(40);
+  display: flex;
+  flex-direction: row;
+  width: pem(520);
+  margin-bottom: pem(24);
+  justify-content: space-between;
+}
+.cancel-button {
+  width: pem(240);
+  height: pem(88);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: pem(100);
+  color: rgba(30, 30, 30, 1);
+  @include fsp(32);
+  border: rgba(153, 153, 153, 1) solid 1px;
+  font-weight: 400;
+}
+.ok-button {
+  width: pem(240);
+  height: pem(88);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: pem(100);
+  color: rgba(83, 68, 64, 1);
+  @include fsp(32);
+  background-color: rgba(255, 232, 60, 1);
+  font-weight: 500;
+}
+.button-row {
+  width: pem(520);
+}
+.slot-modal-top {
+  width: 100%;
+  height: pem(104);
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  img {
+    width: pem(56);
+    height: pem(56);
+    margin-right: pem(24);
+    content: url("//cdn.51talk.com/apollo/images/884bbb2cd8c246254cd06979ff7ae2d7.png");
+  }
+}
+.slot-modal-button {
+  width: 100%;
+  height: pem(112);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-top: rgba(227, 227, 227, 1) solid 1px;
+  div {
+    width: pem(580);
+    height: pem(88);
+    background-color: rgba(227, 227, 227, 1);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    @include fsp(32);
+    color: rgba(153, 153, 153, 1);
+    border-radius: pem(44);
+  }
+}
+.slot-modal-savebutton {
+  width: 100%;
+  height: pem(112);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-top: rgba(227, 227, 227, 1) solid 1px;
+  div {
+    background-color: rgba(255, 232, 60, 1);
+    color: rgba(83, 68, 64, 1);
+    font-weight: 500;
+    width: pem(580);
+    height: pem(88);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    @include fsp(32);
+    border-radius: pem(44);
+  }
+}
+.slot-modal-title {
+  color: rgba(30, 30, 30, 1);
+  @include fsp(32);
+  width: pem(686);
+  margin-left: pem(32);
+  line-height: pem(39);
+  margin-bottom: pem(24);
+}
+.slot-week-row {
+  width: pem(686);
+  margin-left: pem(32);
+  display: flex;
+  flex-direction: row;
+  margin-bottom: pem(56);
+  flex-wrap: wrap;
+}
+.slot-week-item {
+  width: pem(148);
+  height: pem(80);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgba(30, 30, 30, 1);
+  @include fsp(28);
+  font-weight: 500;
+  background-color: rgba(255, 232, 60, 1);
+  border-radius: pem(16);
+  margin-right: pem(16);
+  margin-top: pem(16);
+}
+.slot-time-row {
+  margin-left: pem(24);
+  display: flex;
+  flex-direction: row;
+  margin-bottom: pem(16);
+  flex-wrap: wrap;
+  margin-right: pem(24);
+}
+.slot-regular-row {
+  width: 100%;
+  background-color: rgba(242, 242, 242, 1);
+  p {
+    color: rgba(155, 155, 155, 1);
+    @include fsp(28);
+    margin-top: pem(22);
+    margin-left: pem(32);
+    margin-right: pem(32);
+    font-weight: 400;
+  }
+}
+.slot-regular-child-row {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  padding-bottom: pem(105);
+  scrollbar-width: 0;
+  margin-right: pem(24);
+  margin-left: pem(24);
+}
+.slot-time-item {
+  width: pem(124);
+  height: pem(80);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgba(153, 153, 153, 1);
+  @include fsp(28);
+  border-radius: pem(16);
+  margin-right: pem(8);
+  margin-left: pem(8);
+  margin-top: pem(16);
+  position: relative;
+}
+.slot-time-item-normal {
+  background-color: rgba(246, 246, 246, 1);
+  border: rgba(227, 227, 227, 1) solid 1px;
+  color: rgba(30, 30, 30, 1);
+  box-sizing: border-box;
+}
+.slot-time-item-selected {
+  background-color: rgba(255, 251, 222, 1);
+  border: rgba(255, 221, 35, 1) solid 1px;
+  color: rgba(30, 30, 30, 1);
+  box-sizing: border-box;
+  font-weight: 500;
+}
+.slot-time-item-recomm {
+  @include fsp(20);
+  width: pem(56);
+  height: pem(28);
+  position: absolute;
+  right: -1px;
+  top: -1px;
+  border-top-right-radius: pem(16);
+  border-bottom-left-radius: pem(16);
+  background-color: rgba(255, 232, 60, 1);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: rgba(83, 68, 64, 1);
+}
+.slot-time-item-img {
+  width: pem(40);
+  height: pem(40);
+  position: absolute;
+  right: -1px;
+  bottom: -1px;
+  content: url("//cdn.51talk.com/apollo/images/4f165a1bf371d46bbe2ace4516ab1deb.png");
+}
+.unselected {
+  font-weight: 400;
+  background-color: rgba(246, 246, 246, 1);
+  border: rgba(227, 227, 227, 1) solid 1px;
+  box-sizing: border-box;
+}

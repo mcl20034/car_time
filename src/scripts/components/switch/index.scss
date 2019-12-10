@@ -1,0 +1,22 @@
+@import "../../../css/_base.scss";
+
+.switch-parent {
+  width: pem(88);
+  height: pem(48);
+  border-radius: pem(24);
+  background-color: rgba(227, 227, 227, 1);
+  display: flex;
+  align-items: center;
+  padding-right: pem(4);
+  padding-left: pem(4);
+}
+.switch-child {
+  width: pem(40);
+  height: pem(40);
+  border-radius: 100px;
+  background-color: white;
+}
+.switch-parent-selected {
+    background-color: rgba(255, 232, 60, 1);
+    justify-content: flex-end;
+}

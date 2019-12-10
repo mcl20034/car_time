@@ -1,0 +1,319 @@
+{
+     "interfaceType": "GET",
+     "requiredParameters": [
+          {
+               "name": "userId",
+               "required": true,
+               "remark": "",
+               "nameVerify": "name_1575358248000",
+               "ruleVerify": "rule_1575358248000"
+          }
+     ],
+     "responseParameters": [
+          {
+               "id": "00",
+               "kind": "mock",
+               "name": "code",
+               "rule": 10000,
+               "array": [],
+               "nameVerify": "name_1575613223000458",
+               "ruleVerify": "rule_1575613223000654"
+          },
+          {
+               "id": "01",
+               "kind": "string",
+               "name": "message",
+               "rule": "获取成功!",
+               "array": [],
+               "nameVerify": "name_1575613223000666",
+               "ruleVerify": "rule_157561322300094"
+          },
+          {
+               "id": "02",
+               "kind": "object",
+               "name": "res",
+               "rule": "",
+               "array": [],
+               "nameVerify": "name_1575613223000492",
+               "ruleVerify": "rule_1575613223000834"
+          },
+          {
+               "id": "0201",
+               "kind": "mock",
+               "name": "min_slots",
+               "rule": 4,
+               "array": [],
+               "nameVerify": "name_1575613223000210",
+               "ruleVerify": "rule_1575613223000110"
+          },
+          {
+               "id": "0202",
+               "kind": "mock",
+               "name": "max_slots",
+               "rule": 6,
+               "array": [],
+               "nameVerify": "name_1575613223000209",
+               "ruleVerify": "rule_1575613223000677"
+          },
+          {
+               "id": "0203",
+               "kind": "array(object)",
+               "name": "user_slots",
+               "rule": "",
+               "array": [],
+               "nameVerify": "name_1575613223000203",
+               "ruleVerify": "rule_1575613223000334"
+          },
+          {
+               "id": "020301",
+               "kind": "string",
+               "name": "week",
+               "rule": "每周一",
+               "array": [
+                    "0203"
+               ],
+               "nameVerify": "name_1575613223000593",
+               "ruleVerify": "rule_1575613223000558"
+          },
+          {
+               "id": "020302",
+               "kind": "mock",
+               "name": "week_num",
+               "rule": 1,
+               "array": [
+                    "0203"
+               ],
+               "nameVerify": "name_1575613223000415",
+               "ruleVerify": "rule_1575613223000771"
+          },
+          {
+               "id": "020303",
+               "kind": "string",
+               "name": "time",
+               "rule": "19:00",
+               "array": [
+                    "0203"
+               ],
+               "nameVerify": "name_1575613223000128",
+               "ruleVerify": "rule_1575613223000719"
+          },
+          {
+               "id": "020304",
+               "kind": "string",
+               "name": "slot",
+               "rule": "20",
+               "array": [
+                    "0203"
+               ],
+               "nameVerify": "name_1575613223000209",
+               "ruleVerify": "rule_1575613223000313"
+          },
+          {
+               "id": "0204",
+               "kind": "array(object)",
+               "name": "system_slots",
+               "rule": "",
+               "array": [
+                    "0203"
+               ],
+               "nameVerify": "name_1575613223000847",
+               "ruleVerify": "rule_1575613223000720"
+          },
+          {
+               "id": "020401",
+               "kind": "string",
+               "name": "week",
+               "rule": "周一",
+               "array": [
+                    "0203",
+                    "0204"
+               ],
+               "nameVerify": "name_1575613223000376",
+               "ruleVerify": "rule_1575613223000733"
+          },
+          {
+               "id": "020402",
+               "kind": "mock",
+               "name": "week_num",
+               "rule": 1,
+               "array": [
+                    "0203",
+                    "0204"
+               ],
+               "nameVerify": "name_1575613223000363",
+               "ruleVerify": "rule_1575613223000916"
+          },
+          {
+               "id": "020403",
+               "kind": "array(object)",
+               "name": "slots",
+               "rule": "",
+               "array": [
+                    "0203",
+                    "0204"
+               ],
+               "nameVerify": "name_1575613223000182",
+               "ruleVerify": "rule_1575613223000691"
+          },
+          {
+               "id": "02040301",
+               "kind": "mock",
+               "name": "status",
+               "rule": 1,
+               "array": [
+                    "0203",
+                    "0204",
+                    "020403"
+               ],
+               "nameVerify": "name_15756132230009",
+               "ruleVerify": "rule_1575613223000887"
+          },
+          {
+               "id": "02040302",
+               "kind": "mock",
+               "name": "slot",
+               "rule": 16,
+               "array": [
+                    "0203",
+                    "0204",
+                    "020403"
+               ],
+               "nameVerify": "name_1575613223000590",
+               "ruleVerify": "rule_1575613223000251"
+          },
+          {
+               "id": "02040303",
+               "kind": "string",
+               "name": "time",
+               "rule": "06:00",
+               "array": [
+                    "0203",
+                    "0204",
+                    "020403"
+               ],
+               "nameVerify": "name_157561322300068",
+               "ruleVerify": "rule_1575613223000589"
+          },
+          {
+               "id": "020404",
+               "kind": "array(object)",
+               "name": "regular_slots",
+               "rule": "",
+               "array": [
+                    "0203",
+                    "0204",
+                    "020403"
+               ],
+               "nameVerify": "name_1575613223000863",
+               "ruleVerify": "rule_1575613223000762"
+          },
+          {
+               "id": "02040401",
+               "kind": "mock",
+               "name": "status",
+               "rule": 1,
+               "array": [
+                    "0203",
+                    "0204",
+                    "020403",
+                    "020404"
+               ],
+               "nameVerify": "name_1575613223000113",
+               "ruleVerify": "rule_1575613223000270"
+          },
+          {
+               "id": "02040402",
+               "kind": "mock",
+               "name": "slot",
+               "rule": 16,
+               "array": [
+                    "0203",
+                    "0204",
+                    "020403",
+                    "020404"
+               ],
+               "nameVerify": "name_1575613223000257",
+               "ruleVerify": "rule_1575613223000104"
+          },
+          {
+               "id": "02040403",
+               "kind": "string",
+               "name": "time",
+               "rule": "06:00",
+               "array": [
+                    "0203",
+                    "0204",
+                    "020403",
+                    "020404"
+               ],
+               "nameVerify": "name_1575613223000688",
+               "ruleVerify": "rule_1575613223000477"
+          },
+          {
+               "id": "0205",
+               "kind": "string",
+               "name": "line_text",
+               "rule": "据有关部门规定，以下深夜时段只对成人开放",
+               "array": [
+                    "0203",
+                    "0204",
+                    "020403",
+                    "020404"
+               ],
+               "nameVerify": "name_1575613223000176",
+               "ruleVerify": "rule_1575613223000997"
+          },
+          {
+               "id": "0206",
+               "kind": "string",
+               "name": "layer_text",
+               "rule": "根据相关规定，义务教育阶段的学员不可以预约21：00后课程，请确认上课本人为成人学员",
+               "array": [
+                    "0203",
+                    "0204",
+                    "020403",
+                    "020404"
+               ],
+               "nameVerify": "name_1575613223000515",
+               "ruleVerify": "rule_1575613223000764"
+          },
+          {
+               "id": "0207",
+               "kind": "mock",
+               "name": "layer_switch",
+               "rule": 1,
+               "array": [
+                    "0203",
+                    "0204",
+                    "020403",
+                    "020404"
+               ],
+               "nameVerify": "name_1575613223000743",
+               "ruleVerify": "rule_1575613223000969"
+          },
+          {
+               "id": "0208",
+               "kind": "mock",
+               "name": "switch",
+               "rule": 1,
+               "array": [
+                    "0203",
+                    "0204",
+                    "020403",
+                    "020404"
+               ],
+               "nameVerify": "name_157561322300044",
+               "ruleVerify": "rule_1575613223000383"
+          }
+     ],
+     "reqError": [],
+     "docError": [
+          "接口文档缺少［{{parameters}}］做为请求参数"
+     ],
+     "interfaceUrl": "/autoReserve/getDetail",
+     "interfaceName": "/autoReserve/getDetail",
+     "lazyLoad": "no",
+     "responseParametersType": true,
+     "responseJson": "{\n    \"code\":10000,\n    \"message\":\"获取成功!\",\n    \"res\":{\n        \"min_slots\":4,\n        \"max_slots\":6,\n        \"user_slots\":[\n            {\n                \"week\":\"每周一\",\n                \"week_num\":1,\n                \"time\":\"07:00\",\n                \"slot\":\"18\"\n            },\n            {\n                \"week\":\"每周一\",\n                \"week_num\":1,\n                \"time\":\"08:00\",\n                \"slot\":\"20\"\n            }\n        ],\n        \"system_slots\":[\n            {\n                \"week\":\"周一\",\n                \"week_num\":1,\n                \"slots\":[\n                    {\n                        \"status\":0,\n                        \"slot\":16,\n                        \"time\":\"06:00\"\n                    },\n                    {\n                        \"status\":0,\n                        \"slot\":17,\n                        \"time\":\"06:30\"\n                    },\n                    {\n                        \"status\":1,\n                        \"slot\":18,\n                        \"time\":\"07:00\"\n                    },\n                    {\n                        \"status\":2,\n                        \"slot\":19,\n                        \"time\":\"07:30\"\n                    },\n                    {\n                        \"status\":2,\n                        \"slot\":20,\n                        \"time\":\"08:00\"\n                    },\n                    {\n                        \"status\":2,\n                        \"slot\":21,\n                        \"time\":\"08:30\"\n                    },\n                    {\n                        \"status\":1,\n                        \"slot\":22,\n                        \"time\":\"09:00\"\n                    },\n                    {\n                        \"status\":1,\n                        \"slot\":23,\n                        \"time\":\"09:30\"\n                    },\n                    {\n                        \"status\":1,\n                        \"slot\":24,\n                        \"time\":\"10:00\"\n                    }\n                ],\n                \"regular_slots\":[\n                    {\n                        \"status\":1,\n                        \"slot\":25,\n                        \"time\":\"22:00\"\n                    },\n                    {\n                        \"status\":0,\n                        \"slot\":26,\n                        \"time\":\"22:30\"\n                    },\n                    {\n                        \"status\":0,\n                        \"slot\":27,\n                        \"time\":\"23:00\"\n                    },\n                    {\n                        \"status\":0,\n                        \"slot\":28,\n                        \"time\":\"23:30\"\n                    }\n                ]\n            },\n            {\n                \"week\":\"周二\",\n                \"week_num\":2,\n                \"slots\":[\n                    {\n                        \"status\":1,\n                        \"slot\":16,\n                        \"time\":\"06:00\"\n                    },\n                    {\n                        \"status\":0,\n                        \"slot\":17,\n                        \"time\":\"06:00\"\n                    }\n                ],\n                \"regular_slots\":[\n                    {\n                        \"status\":1,\n                        \"slot\":16,\n                        \"time\":\"06:00\"\n                    },\n                    {\n                        \"status\":0,\n                        \"slot\":16,\n                        \"time\":\"06:00\"\n                    }\n                ]\n            },\n            {\n                \"week\":\"周三\",\n                \"week_num\":3,\n                \"slots\":[\n                    {\n                        \"status\":1,\n                        \"slot\":16,\n                        \"time\":\"06:00\"\n                    },\n                    {\n                        \"status\":0,\n                        \"slot\":17,\n                        \"time\":\"06:00\"\n                    }\n                ],\n                \"regular_slots\":[\n                    {\n                        \"status\":1,\n                        \"slot\":16,\n                        \"time\":\"06:00\"\n                    },\n                    {\n                        \"status\":0,\n                        \"slot\":16,\n                        \"time\":\"06:00\"\n                    }\n                ]\n            },\n            {\n                \"week\":\"周四\",\n                \"week_num\":4,\n                \"slots\":[\n                    {\n                        \"status\":1,\n                        \"slot\":16,\n                        \"time\":\"06:00\"\n                    },\n                    {\n                        \"status\":0,\n                        \"slot\":17,\n                        \"time\":\"06:00\"\n                    }\n                ],\n                \"regular_slots\":[\n                    {\n                        \"status\":1,\n                        \"slot\":16,\n                        \"time\":\"06:00\"\n                    },\n                    {\n                        \"status\":0,\n                        \"slot\":16,\n                        \"time\":\"06:00\"\n                    }\n                ]\n            },\n            {\n                \"week\":\"周五\",\n                \"week_num\":5,\n                \"slots\":[\n                    {\n                        \"status\":1,\n                        \"slot\":16,\n                        \"time\":\"06:00\"\n                    },\n                    {\n                        \"status\":0,\n                        \"slot\":17,\n                        \"time\":\"06:00\"\n                    }\n                ],\n                \"regular_slots\":[\n                    {\n                        \"status\":1,\n                        \"slot\":16,\n                        \"time\":\"06:00\"\n                    },\n                    {\n                        \"status\":0,\n                        \"slot\":16,\n                        \"time\":\"06:00\"\n                    }\n                ]\n            },\n            {\n                \"week\":\"周六\",\n                \"week_num\":6,\n                \"slots\":[\n                    {\n                        \"status\":1,\n                        \"slot\":16,\n                        \"time\":\"06:00\"\n                    },\n                    {\n                        \"status\":0,\n                        \"slot\":17,\n                        \"time\":\"06:00\"\n                    }\n                ],\n                \"regular_slots\":[\n                    {\n                        \"status\":1,\n                        \"slot\":16,\n                        \"time\":\"06:00\"\n                    },\n                    {\n                        \"status\":0,\n                        \"slot\":16,\n                        \"time\":\"06:00\"\n                    }\n                ]\n            },\n            {\n                \"week\":\"周七\",\n                \"week_num\":7,\n                \"slots\":[\n                    {\n                        \"status\":1,\n                        \"slot\":16,\n                        \"time\":\"06:00\"\n                    },\n                    {\n                        \"status\":0,\n                        \"slot\":17,\n                        \"time\":\"06:00\"\n                    }\n                ],\n                \"regular_slots\":[\n                    {\n                        \"status\":1,\n                        \"slot\":16,\n                        \"time\":\"06:00\"\n                    },\n                    {\n                        \"status\":0,\n                        \"slot\":16,\n                        \"time\":\"06:00\"\n                    }\n                ]\n            }\n        ],\n        \"line_text\":\"据有关部门规定，以下深夜时段只对成人开放\",\n        \"layer_text\":\"根据相关规定，义务教育阶段的学员不可以预约21：00后课程，请确认上课本人为成人学员\",\n        \"layer_switch\":1,\n        \"switch\":1\n    }\n}",
+     "methodError": "请求类型异常请确认"
+}

@@ -1,0 +1,73 @@
+dev:
+  - name:
+    script:
+      - cnpm install
+  - name: '@nat/freedom-middleware-mock2easy'
+    version: 
+    before: 
+    args:
+      port: 8080
+  - name: '@nat/freedom-middleware-webpack4'
+    version: 
+    before: 
+    args:
+      port: 3333
+      env: dev
+      publicPath: //172.16.4.37:3333
+      build:  
+      proxy:
+        context:
+          - /wap
+          - /api
+          - /51test
+          - /autoReserve
+        options:
+          target: http://localhost:8080
+build:
+  - name: '@nat/freedom-middleware-webpack4'
+    version: 
+    before: 
+    args:
+      projectID: 2064
+      env: prod
+      publicPath: //cdn.51talk.com/apollo/appoint-courses/
+      build: build/apollo/appoint-courses/
+      bundleAnalyzerReportPort: 
+      specialVersion: 
+serve:
+  - name: 
+    script:
+      - cnpm install
+  - name: '@nat/freedom-middleware-webpack4'
+    version: 
+    before: 
+    args:
+      projectID: 2064
+      env: prod
+      publicPath: 
+      build: build
+      bundleAnalyzerReportPort: 
+      specialVersion: 
+  - name: '@nat/freedom-middleware-mock2easy'
+    version: 
+    before: 
+    args:
+      port: 8080
+  - name: '@51npm/freedom-middleware-serve'
+    version: 1.0.10
+    before: 
+    args:
+      port: 8888
+      build: build
+      proxy:
+        context:
+          - /api
+        options:
+          target: http://localhost:8080
+publish:
+  - name: '@51npm/freedom-middleware-publish'
+    version: 
+    before: 
+    args:
+      projectID: 2064
+      path: build
