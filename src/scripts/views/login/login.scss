@@ -1,0 +1,45 @@
+@import "../../../css/_base.scss";
+body {
+  @include fsp(24);
+}
+.login {
+  width: 100%;
+  height: 100vh;
+  background-color: #f7f7f7;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.login-img{
+  width: 100%;
+  height: pem(324);
+  content: url('../../images/login_back.png');
+}
+.login-logo{
+  width: pem(157);
+  height: pem(70);
+  margin-top: pem(80);
+  position: absolute;
+  content: url('../../images/login_logo.png');
+}
+.login-child{
+  width: pem(690);
+  border-radius: pem(20);
+  background-color: white;
+  position: absolute;
+  margin-top: pem(218);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.login-child-title{
+  width: pem(628);
+  color: rgba(4, 16, 49, 1);
+  @include fsp(32);
+  font-weight: bold;
+  margin-top: pem(49);
+}
+.login-child-input{
+  width: pem(630);
+}
