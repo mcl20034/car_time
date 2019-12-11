@@ -1,0 +1,111 @@
+@import "../../../css/_base.scss";
+body {
+  @include fsp(24);
+  font-family: PingFang;
+}
+li {
+  list-style: none;
+}
+.down-box {
+  width: 100%;
+  height: 100vh;
+  background-color: #f7f7f7;
+  position: relative;
+}
+.box-bg {
+  width: 100%;
+  height: pem(324);
+  content: url("../../images/login_back.png");
+}
+.header {
+  height: pem(324);
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  .box-logo {
+    height: pem(50);
+    margin-top: pem(30);
+    margin-left: pem(30);
+    content: url("../../images/login_logo.png");
+  }
+  .box-tit {
+    padding-top: pem(50);
+    color: #fff;
+    text-align: center;
+    p {
+      font-size: pem(40);
+      font-weight: 700;
+      color: rgba(255, 255, 255, 1);
+      line-height: pem(48);
+    }
+    div {
+      width: pem(250);
+      display: flex;
+      justify-content: space-between;
+      margin: auto;
+      font-size: pem(30);
+      font-weight: 400;
+      color: rgba(255, 255, 255, 1);
+      line-height: pem(48);
+      padding-top: pem(40);
+      span {
+        display: inline-block;
+        width: 30%;
+      }
+    }
+  }
+}
+
+.main-list{
+  margin:pem(45) pem(80);
+  .list{
+    display: flex;
+    margin-bottom: pem(90);
+    .icon{
+      width: pem(80);
+      height: pem(80);
+      margin-right:pem(30);
+    }
+    .context{
+      flex: 1;
+      p{
+        font-size:pem(24);
+        font-weight:500;
+        color:rgba(0,0,0,1);
+        line-height:pem(40);
+      }
+      span{
+        font-size:pem(20);
+        font-weight:400;
+        color:rgba(0,0,0,.8);
+        line-height:pem(40);
+      }
+    }
+  }
+}
+.bottom{
+  width:100%;
+  height:pem(140);
+  background:rgba(255,255,255,1);
+  border:1px solid rgba(221,221,221,1);
+  position: absolute;
+  bottom: 0;
+  .bottom-btn {
+    width:80%;
+    height:pem(80);
+    margin:pem(30) auto;
+    background:rgba(44,163,218,1);
+    border-radius:pem(10);
+    font-size:pem(26);
+    font-weight:bold;
+    color:rgba(255,255,255,1);
+    line-height:pem(80);
+    text-align: center;
+    img {
+      height: pem(30);
+      width: pem(30);
+      padding: pem(10);
+    }
+  }
+}
