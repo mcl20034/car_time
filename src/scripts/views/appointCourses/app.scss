@@ -14,245 +14,7 @@ li {
   background: #051232;
   margin: 0;
   height: 100%;
-}
-.content-title {
-  @include fsp(36);
-  color: rgba(30, 30, 30, 1);
-  font-weight: 500;
-  margin-top: pem(72);
-  line-height: (43/36);
-}
-.content-agreement {
-  @include fsp(24);
-  width: pem(686);
-  display: flex;
-  justify-content: center;
-  color: rgba(153, 153, 153, 1);
-  margin-top: pem(56);
-  margin-bottom: pem(56);
-  span {
-    color: rgba(30, 30, 30, 1);
-  }
-}
-.content-recommend {
-  @include fsp(24);
-  color: rgba(153, 153, 153, 1);
-  font-weight: 400;
-  margin-top: pem(16);
-  line-height: (29/24);
-  span {
-    font-weight: 500;
-    color: rgba(30, 30, 30, 1);
-  }
-}
-.select-slot {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-.selected-row {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  width: 100%;
-  align-items: flex-end;
-}
-.line {
-  width: 100%;
-  height: 1px;
-  background-color: rgba(227, 227, 227, 1);
-  margin-top: pem(40);
-}
-.select-item {
-  display: flex;
-  width: pem(148);
-  height: pem(120);
-  border-radius: pem(16);
-  border: rgba(227, 227, 227, 1) dashed 1px;
-  margin-right: pem(16);
-  margin-top: pem(32);
-  justify-content: center;
-  align-items: center;
-  color: rgba(102, 102, 102, 1);
-  @include fsp(28);
-}
-.selected-item {
-  display: flex;
-  width: pem(164);
-  height: pem(136);
-  margin-right: pem(16);
-  margin-top: pem(32);
-  align-items: flex-end;
   position: relative;
-}
-.selected-child {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: pem(148);
-  height: pem(120);
-  color: rgba(30, 30, 30, 1);
-  @include fsp(28);
-  font-weight: 500;
-  border-radius: pem(16);
-  border: rgba(255, 221, 35, 1) solid 1px;
-  flex-direction: column;
-  background-color: rgba(255, 251, 222, 1);
-  div {
-    line-height: pem(44);
-  }
-}
-.selected-close {
-  width: pem(43);
-  height: pem(43);
-  position: absolute;
-  right: 0;
-  top: 0;
-  content: url("//cdn.51talk.com/apollo/images/1cfcdc9207d7f82f2b642a1120445ba0.png");
-}
-.save-button {
-  background-color: rgba(255, 232, 60, 1);
-  width: pem(580);
-  height: pem(88);
-  border-radius: pem(44);
-  line-height: pem(88);
-  text-align: center;
-  color: rgba(83, 68, 64, 1);
-  @include fsp(32);
-  font-weight: 500;
-  margin-top: pem(32);
-}
-
-.switch-row {
-  width: pem(686);
-  height: pem(100);
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-  span {
-    @include fsp(36);
-    color: rgba(30, 30, 30, 1);
-    font-weight: 500;
-  }
-  div {
-    display: flex;
-    align-items: center;
-    span {
-      @include fsp(24);
-      color: rgba(255, 113, 113, 1);
-      display: flex;
-      flex-direction: row;
-      align-items: center;
-      margin-right: pem(16);
-    }
-  }
-}
-.switch-row-selected {
-  height: pem(151);
-  span {
-    display: flex;
-    flex-direction: column;
-    span {
-      @include fsp(24);
-      color: rgba(255, 113, 113, 1);
-      font-weight: 400;
-      margin-top: pem(16);
-    }
-  }
-  div {
-    span {
-      color: rgba(153, 153, 153, 1);
-    }
-  }
-}
-.switch-parents {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: pem(686);
-}
-.switch-button {
-  width: pem(580);
-  height: pem(88);
-  line-height: pem(88);
-  border-radius: pem(44);
-  border: rgba(153, 153, 153, 1) solid 1px;
-  color: rgba(30, 30, 30, 1);
-  @include fsp(32);
-  font-weight: 400;
-  text-align: center;
-}
-.explain-parent {
-  width: pem(686);
-  border-radius: pem(24);
-  background-color: rgba(244, 244, 244, 0.5);
-  margin-top: pem(56);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding-bottom: pem(56);
-}
-.explain-title {
-  color: hsl(0, 0%, 12%);
-  @include fsp(35);
-  font-weight: 500;
-  margin-top: pem(56);
-  height: pem(48);
-  line-height: pem(48);
-  display: flex;
-  align-items: center;
-  margin-bottom: pem(18);
-  img {
-    width: pem(48);
-    height: pem(48);
-    content: url("//cdn.51talk.com/apollo/images/7062169d897c68fd857fbff52c7ee022.png");
-  }
-}
-.explain-item-title {
-  height: pem(53);
-  width: pem(622);
-  display: flex;
-  position: relative;
-  margin-top: pem(40);
-  span {
-    color: rgba(30, 30, 30, 1);
-    @include fsp(32);
-    font-weight: 500;
-    height: pem(45);
-    display: flex;
-    align-items: center;
-    position: absolute;
-    left: pem(16);
-    bottom: 0;
-  }
-  img {
-    width: pem(40);
-    height: pem(40);
-    content: url("//cdn.51talk.com/apollo/images/2422ba6f3ad2e22ba597d98f0765edae.png");
-  }
-}
-.explain-item-content {
-  width: pem(622);
-  display: flex;
-  justify-content: flex-end;
-  margin-top: pem(32);
-  img {
-    width: pem(96);
-    height: pem(96);
-    content: url("//cdn.51talk.com/apollo/images/a7281ae240544cf7c12ea942697f6422.png");
-  }
-}
-.explain-item-content-child {
-  width: pem(484);
-  padding: pem(24);
-  position: relative;
-  background-color: white;
-  border-radius: pem(30);
-  line-height: pem(40);
-  color: rgba(102, 102, 102, 1);
-  @include fsp(28);
-  margin-right: pem(24);
 }
 
 .logo {
@@ -264,6 +26,7 @@ li {
   margin-top: pem(40);
   img {
     height: pem(60);
+    content: url('../../images/login_logo.png');
   }
 }
 .module_title {
@@ -383,7 +146,7 @@ li {
   font-weight: 400;
   color: rgba(255, 255, 255, 1);
   line-height: pem(118);
-
+  padding-bottom:pem(150);
   .btn {
     display: inline-block;
     border: 2px solid rgba(61, 77, 123, 1);
@@ -394,5 +157,55 @@ li {
     text-align: center;
     float: right;
     margin-top: pem(28);
+  }
+}
+.bottom-down{
+  width:100%;
+  height:pem(150);
+  background:rgba(0,0,0,.5);
+  position: fixed;
+  bottom: 0;
+  display: flex;
+  justify-content: flex-start;
+  color: #FFF;
+  padding:pem(30) pem(66) ;
+  box-sizing: border-box;
+  .app_logo{
+    width:pem(90);
+    margin-right: pem(28);
+    img{
+      width:pem(90);
+      height:pem(90);
+      background:rgba(255,255,255,1);
+      border-radius:pem(16);
+      content: url("../../images/app_logo.png");
+    }
+  }
+  .text{
+    flex: 1;
+    p{
+      font-size:pem(30);
+      font-weight:bold;
+      color:rgba(255,255,255,1);
+      line-height:pem(48);
+    }
+    span{
+      font-size:pem(20);
+      font-weight:bold;
+      color:rgba(255,255,255,.8);
+      line-height:pem(48);
+    }
+  }
+  .btn{
+    width:pem(190);
+    height:pem(60);
+    background:rgba(66,98,192,1);
+    border-radius:pem(30);
+    font-size:pem(26);
+    font-weight:bold;
+    color:rgba(255,255,255,1);
+    line-height:pem(60);
+    text-align: center;
+    margin-top: pem(20);
   }
 }

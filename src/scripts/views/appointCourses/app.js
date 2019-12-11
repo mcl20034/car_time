@@ -1,17 +1,21 @@
 import React from 'react';
 import { observable } from "mobx";
 import { observer, inject, useLocalStore } from 'mobx-react';
+import { Link } from 'react-router-dom';
+import ReactDOM from 'react-dom';
 import SelectSlotRow from './components/selectSlotRow';
 import './app.scss';
 import SwitchRow from './components/switchRow';
 import ExplainRow from './components/explainRow';
 import { Modal, SlotModal, Toast } from '../../components';
-import Lock from './images/lock.png'
-import Team from './images/team.png'
-import Ellipse from './images/ellipse.png'
-import Currency from './images/currency.png'
-import Share from './images/share.png'
-import Public from './images/public.png'
+import Lock from '../../images/lock.png'
+import Team from '../../images/team.png'
+import Ellipse from '../../images/ellipse.png'
+import Currency from '../../images/currency.png'
+import Share from '../../images/share.png'
+import Public from '../../images/public.png'
+import Android from '../../images/android.png'
+import IOS from '../../images/ios.png'
 
 const CURRENCT_TYPE = [
   {
@@ -27,11 +31,15 @@ const CURRENCT_TYPE = [
     name: 'BHU'
   }
 ]
+@inject('rootStore')
+@observer
 class App extends React.Component {
+  @observable time = 1;
   constructor(props) {
     super(props);
     this.state = {
-      currencyType: 'BTC'
+      currencyType: 'BTC',
+      bottomDownShow: true,
     };
   }
   componentDidMount() {
@@ -41,17 +49,25 @@ class App extends React.Component {
   changeType = (type) => {
     console.log('console log for chrom type', type);
     this.setState({
-      currencyType: type
+      currencyType: type,
+    })
+  }
+  toLogin = () => {
+    this.props.histroy
+  }
+  colseBottomDown = () => {
+    this.setState({
+      bottomDownShow: false
     })
   }
   render() {
-    const { currencyType } = this.state
+    const { currencyType, bottomDownShow } = this.state
     console.log('console log for chrom currencyType', currencyType);
     return (
       <div className="app">
-        <div>
+        <div >
           <div className="logo">
-            <img src={Lock} />
+            <img />
           </div>
           <div>
             <div className='module_title'>全新的数字资产交易平台</div>
@@ -75,7 +91,9 @@ class App extends React.Component {
                 </div>
               </div>
               <div className='main_btn'>
-                <div className='border-btn'>登录</div>
+                <Link to="/login">
+                  <div className='border-btn' onClick={this.toLogin}>登录</div>
+                </Link>
                 <div className='regist'>注册</div>
               </div>
             </div>
@@ -121,22 +139,47 @@ class App extends React.Component {
             <div className='module_border' />
             <div className='module_main_three'>
               <div className='main_btn'>
-                <div className='border-btn'>
-                  <span><img src={Team} /></span>
-                  安卓下载
-                </div>
-                <div className='border-btn'>
-                  <span><img src={Team} /></span>
-                  IOS下载
-                </div>
+                <Link to={
+                  {
+                    pathname: '/download',
+                    search: 'type=Android'
+                  }
+                }>
+                  <div className='border-btn'>
+                    <span><img src={Android} /></span>
+                    安卓下载
+                  </div>
+                </Link>
+                <Link to={{
+                  pathname: '/download',
+                  search: 'type=IOS'
+                }}>
+                  <div className='border-btn'>
+                    <span><img src={IOS} /></span>
+                    IOS下载
+                  </div>
+                </Link>
               </div>
             </div>
           </div>
-          <div className='footer'>
+          <div className='footer' style={bottomDownShow ? {} :{paddingBottom:0}}>
             <span>©2015-2019 byou89.com. All Rights Reserved</span>
             <span className='btn'>语言</span>
           </div>
         </div>
+        {
+          bottomDownShow && <div className='bottom-down'>
+            <span style={{ position: 'absolute', right: 10, top: 10 }} onClick={this.colseBottomDown}>X</span>
+            <div className='app_logo'><img /></div>
+            <div className='text'>
+              <p>币U</p>
+              <span>下载移动端进行交易</span>
+            </div>
+            <div className='btn'>
+              下载APP
+            </div>
+          </div>
+        }
       </div>
     )
   }

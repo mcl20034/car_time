@@ -81,7 +81,7 @@
     "pug": "2.0.3",
     "pug-plain-loader": "1.0.0",
     "react": "^16.11.0",
-    "react-dom": "^16.11.0",
+    "react-dom": "^16.12.0",
     "react-router": "^5.1.2",
     "react-router-dom": "^5.1.2",
     "regenerator-runtime": "^0.13.3",
@@ -100,7 +100,7 @@
     "webpack": "4.28.4",
     "webpack-bundle-analyzer": "3.0.4",
     "webpack-dev-middleware": "3.6.0",
-    "webpack-hot-middleware": "2.24.3",
+    "webpack-hot-middleware": "^2.24.3",
     "webpack-merge": "4.2.1"
   }
 }
