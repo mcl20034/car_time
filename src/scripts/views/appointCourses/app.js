@@ -1,57 +1,142 @@
 import React from 'react';
 import { observable } from "mobx";
-import { observer, inject } from 'mobx-react';
+import { observer, inject, useLocalStore } from 'mobx-react';
 import SelectSlotRow from './components/selectSlotRow';
 import './app.scss';
 import SwitchRow from './components/switchRow';
 import ExplainRow from './components/explainRow';
-import { Modal,SlotModal,Toast } from '../../components';
-@inject('rootStore')
-@observer
+import { Modal, SlotModal, Toast } from '../../components';
+import Lock from './images/lock.png'
+import Team from './images/team.png'
+import Ellipse from './images/ellipse.png'
+import Currency from './images/currency.png'
+import Share from './images/share.png'
+import Public from './images/public.png'
+
+const CURRENCT_TYPE = [
+  {
+    id: 'BTC',
+    name: 'BTC'
+  },
+  {
+    id: 'ETH',
+    name: 'ETH'
+  },
+  {
+    id: 'BHU',
+    name: 'BHU'
+  }
+]
 class App extends React.Component {
-  @observable time = 1;
   constructor(props) {
     super(props);
-    const { appointStore } = this.props.rootStore;
-    this.appointStore = appointStore;
+    this.state = {
+      currencyType: 'BTC'
+    };
   }
   componentDidMount() {
-    //获取约课数据
-    this.appointStore.getDetail();
+
   }
 
-  saveTime=()=>{
-    if (this.appointStore.selectList.length < this.appointStore.coursesData.min_slots) {
-      Toast.info(`至少选择${this.appointStore.coursesData.min_slots}个上课时间`, 1200);
-      return
-    }
+  changeType = (type) => {
+    console.log('console log for chrom type', type);
+    this.setState({
+      currencyType: type
+    })
   }
-
   render() {
-    let { coursesData } = this.appointStore;
+    const { currencyType } = this.state
+    console.log('console log for chrom currencyType', currencyType);
     return (
       <div className="app">
-        <div className='content-title'>宝贝每周上课时间</div>
-        <div className='content-recommend'>
-          根据你的学习情况，建议每<span>{coursesData.max_slots}节</span>周课</div>
-        <SelectSlotRow callBack={()=>{this.saveTime()}}
-         openModal={()=>{this.refs.slotModal.showModal()}}/>
-        <SwitchRow />
-        <ExplainRow callBack={() => { this.refs.modal.showModal() }}/>
-        <div className='content-agreement'>查看<span>《使用协议》</span></div>
-        <Modal
-          ref='modal'
-          title='什么是省心约？'
-          content='省心约是为想固定每周上课时间的宝贝推出的自动约课功能。<br/>
-          只需设置好每周上课时间（至少4节课/周）我们持续为宝贝自动约课奥。<br/>
-          我们会优先预约宝贝收藏的外教。<br/>
-          如果收藏外教未开课，我们会为您匹配适合您的优秀老师上课。<br/>
-          省心约只适用于宝贝当前级别主修课教材。'
-          okText='我知道了' />
-          <SlotModal 
-          ref='slotModal'
-          systemSlots={this.appointStore.coursesData.system_slots}
-          />
+        <div>
+          <div className="logo">
+            <img src={Lock} />
+          </div>
+          <div>
+            <div className='module_title'>全新的数字资产交易平台</div>
+            <div className='module_border' />
+            <div>
+              <div className='main_chart'>
+                <ul>
+                  {
+                    CURRENCT_TYPE.map(type => {
+                      console.log('console log for chrom type', type);
+                      return (
+                        <li className={`${currencyType == type.id ? 'active' : ''}`} onClick={this.changeType.bind(this, type.id)}>
+                          {type.name}
+                        </li>
+                      )
+                    })
+                  }
+                </ul>
+                <div className='chart-box'>
+                  图表
+                </div>
+              </div>
+              <div className='main_btn'>
+                <div className='border-btn'>登录</div>
+                <div className='regist'>注册</div>
+              </div>
+            </div>
+          </div>
+          <div>
+            <div className='module_title'>我们的优势</div>
+            <div className='module_border' />
+            <div className='module_main_two'>
+              <li>
+                <div><img src={Team} /></div>
+                <p>专业团队</p>
+                <span>集合全行业顶尖人才</span>
+              </li>
+              <li>
+                <div><img src={Lock} /></div>
+                <p>安全风控</p>
+                <span>世界最顶级的金融级安全方案</span>
+              </li>
+              <li>
+                <div><img src={Ellipse} /></div>
+                <p>高效撮合</p>
+                <span>高性能撮合引擎</span>
+              </li>
+              <li>
+                <div><img src={Currency} /></div>
+                <p>优质币种</p>
+                <span>严格的评选机制筛选出行业内最优质的币种</span>
+              </li>
+              <li>
+                <div><img src={Public} /></div>
+                <p>公开透明</p>
+                <span>根据平台的透明机制，时时公示最新的资产分配</span>
+              </li>
+              <li>
+                <div><img src={Share} /></div>
+                <p>共享自制</p>
+                <span>节点联盟铸造共享收益的自治组织</span>
+              </li>
+            </div>
+          </div>
+          <div>
+            <div className='module_title'>下载移动端进行交易</div>
+            <div className='module_border' />
+            <div className='module_main_three'>
+              <div className='main_btn'>
+                <div className='border-btn'>
+                  <span><img src={Team} /></span>
+                  安卓下载
+                </div>
+                <div className='border-btn'>
+                  <span><img src={Team} /></span>
+                  IOS下载
+                </div>
+              </div>
+            </div>
+          </div>
+          <div className='footer'>
+            <span>©2015-2019 byou89.com. All Rights Reserved</span>
+            <span className='btn'>语言</span>
+          </div>
+        </div>
       </div>
     )
   }
