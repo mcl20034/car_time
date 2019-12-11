@@ -15,7 +15,7 @@ class Login extends React.Component {
     //获取约课数据
   }
 
-           
+
   render() {
     return (
       <div className='login'>
@@ -24,12 +24,11 @@ class Login extends React.Component {
         <div className='login-child'>
           <div className='login-child-title'>欢迎登录币U</div>
           <InputItem
-          className='login-child-input'
-            defaultValue={100}
+            className='login-child-input'
             placeholder="start from left"
             clear
             moneyKeyboardAlign="left"
-            
+
           ></InputItem>
         </div>
       </div>

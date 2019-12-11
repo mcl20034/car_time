@@ -42,4 +42,9 @@ body {
 }
 .login-child-input{
   width: pem(630);
+  border-bottom: red solid 1px;
+  color: rgba(4, 16, 49, 1);
+  @include fsp(26);
+  padding-left: pem(9);
+  line-height: pem(48);
 }
