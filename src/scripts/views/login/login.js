@@ -25,11 +25,25 @@ class Login extends React.Component {
           <div className='login-child-title'>欢迎登录币U</div>
           <InputItem
             className='login-child-input'
-            placeholder="start from left"
+            placeholder="手机号/邮箱"
             clear
             moneyKeyboardAlign="left"
-
           ></InputItem>
+          <InputItem
+            className='login-child-password'
+            placeholder="密码"
+            clear
+            type={'password'}
+            moneyKeyboardAlign="left"
+          ></InputItem>
+          <div className='login-child-button'>
+            <img/>
+            <span>立即登录</span>
+          </div>
+          <div className='login-child-row'>
+            <span className='login-child-forgat'>忘记密码?</span>
+            <span className='login-child-resig'>注册账号</span>
+          </div>
         </div>
       </div>
     )

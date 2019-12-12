@@ -3583,6 +3583,21 @@ ecc-jsbn@~0.1.1:
     jsbn "~0.1.0"
     safer-buffer "^2.1.0"
 
+echarts-for-react@^2.0.15-beta.1:
+  version "2.0.15-beta.1"
+  resolved "https://registry.npm.taobao.org/echarts-for-react/download/echarts-for-react-2.0.15-beta.1.tgz#1afa21ee0f08f9023eff0b5ab3351f2fe0f708b6"
+  integrity sha1-Gvoh7g8I+QI+/wtaszUfL+D3CLY=
+  dependencies:
+    fast-deep-equal "^2.0.1"
+    size-sensor "^0.2.0"
+
+echarts@^4.5.0:
+  version "4.5.0"
+  resolved "https://registry.npm.taobao.org/echarts/download/echarts-4.5.0.tgz#2111960645a345eb819ddac4792a2c065bdff162"
+  integrity sha1-IRGWBkWjReuBndrEeSosBlvf8WI=
+  dependencies:
+    zrender "4.1.2"
+
 ee-first@1.1.1:
   version "1.1.1"
   resolved "https://registry.npm.taobao.org/ee-first/download/ee-first-1.1.1.tgz#590c61156b0ae2f4f0255732a158b266bc56b21d"
@@ -7780,9 +7795,9 @@ rc@^1.2.7:
     minimist "^1.2.0"
     strip-json-comments "~2.0.1"
 
-react-dom@^16.11.0:
+react-dom@^16.12.0:
   version "16.12.0"
-  resolved "https://registry.npm.taobao.org/react-dom/download/react-dom-16.12.0.tgz?cache=0&sync_timestamp=1574324697527&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Freact-dom%2Fdownload%2Freact-dom-16.12.0.tgz#0da4b714b8d13c2038c9396b54a92baea633fe11"
+  resolved "https://registry.npm.taobao.org/react-dom/download/react-dom-16.12.0.tgz#0da4b714b8d13c2038c9396b54a92baea633fe11"
   integrity sha1-DaS3FLjRPCA4yTlrVKkrrqYz/hE=
   dependencies:
     loose-envify "^1.1.0"
@@ -8712,6 +8727,11 @@ simple-swizzle@^0.2.2:
   integrity sha1-pNprY1/8zMoz9w0Xy5JZLeleVXo=
   dependencies:
     is-arrayish "^0.3.1"
+
+size-sensor@^0.2.0:
+  version "0.2.5"
+  resolved "https://registry.npm.taobao.org/size-sensor/download/size-sensor-0.2.5.tgz?cache=0&sync_timestamp=1573536172922&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fsize-sensor%2Fdownload%2Fsize-sensor-0.2.5.tgz#e8ffb7cc5258893472bfda4f5734d66583247757"
+  integrity sha1-6P+3zFJYiTRyv9pPVzTWZYMkd1c=
 
 slash@^1.0.0:
   version "1.0.0"
@@ -9804,10 +9824,10 @@ webpack-dev-middleware@3.6.0:
     range-parser "^1.0.3"
     webpack-log "^2.0.0"
 
-webpack-hot-middleware@2.24.3:
-  version "2.24.3"
-  resolved "https://registry.npm.taobao.org/webpack-hot-middleware/download/webpack-hot-middleware-2.24.3.tgz#5bb76259a8fc0d97463ab517640ba91d3382d4a6"
-  integrity sha1-W7diWaj8DZdGOrUXZAupHTOC1KY=
+webpack-hot-middleware@^2.24.3:
+  version "2.25.0"
+  resolved "https://registry.npm.taobao.org/webpack-hot-middleware/download/webpack-hot-middleware-2.25.0.tgz#4528a0a63ec37f8f8ef565cf9e534d57d09fe706"
+  integrity sha1-RSigpj7Df4+O9WXPnlNNV9Cf5wY=
   dependencies:
     ansi-html "0.0.7"
     html-entities "^1.2.0"
@@ -10026,6 +10046,11 @@ yargs@~3.10.0:
     cliui "^2.1.0"
     decamelize "^1.0.0"
     window-size "0.1.0"
+
+zrender@4.1.2:
+  version "4.1.2"
+  resolved "https://registry.npm.taobao.org/zrender/download/zrender-4.1.2.tgz#8368deff24c7e237cbcbd3a2ff93017905ae43f7"
+  integrity sha1-g2je/yTH4jfLy9Oi/5MBeQWuQ/c=
 
 zscroller@~0.4.0:
   version "0.4.8"
