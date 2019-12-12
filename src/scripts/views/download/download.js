@@ -42,20 +42,38 @@ class Download extends React.Component {
   @observable time = 1;
   constructor(props) {
     super(props);
+    this.state = {
+      maskShow: false
+    }
   }
   componentDidMount() {
     //获取约课数据
   }
-
+  downloadApp = (type) => {
+    console.log('console log for chrom type', type);
+    var ua = navigator.userAgent.toLowerCase();//获取判断用的对象
+    if (ua.match(/MicroMessenger/i) == "micromessenger") {
+      //在微信中打开
+      this.setState({
+        maskShow: true
+      })
+    } else if (browser.versions.ios) {
+      //在IOS浏览器打开
+      console.log('ios-browser');
+    } else if (browser.versions.android) {
+      //在安卓浏览器打开
+      console.log('android-browser');
+    }
+  }
 
   render() {
+    const { maskShow } = this.state
     let search = this.props.location && this.props.location.search || ''
     let type = search && search.split('=')[1] || ''
     return (
       <div className='down-box'>
         <img className='box-bg' />
         <div className='header'>
-          <img className='box-logo' />
           <div className='box-tit'>
             <p>全新的数字资产交易平台</p>
             <div>
@@ -80,17 +98,18 @@ class Download extends React.Component {
         </div>
         <div className='bottom'>
           {
-            type == 'Android' ? <div className='bottom-btn'>
-              <span><img src={Android} /></span>
-              安卓下载
-          </div> :
-              <div className='bottom-btn'>
+            type == 'IOS' ?
+              <div className='bottom-btn' onClick={this.downloadApp.bind(null, 'IOS')}>
                 <span><img src={IOS} /></span>
                 IOS下载
+          </div> :
+              <div className='bottom-btn' onClick={this.downloadApp.bind(null, 'Android')}>
+                <span><img src={Android} /></span>
+                安卓下载
           </div>
           }
         </div>
-
+        { maskShow && <div className='mask-box'><img /></div> }
       </div>
     )
   }

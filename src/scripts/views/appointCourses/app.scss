@@ -35,7 +35,9 @@ li {
   color: rgba(255, 255, 255, 1);
   line-height: pem(48);
   text-align: center;
-  // padding-bottom: pem(16);
+}
+.module_dif{
+  margin-top: pem(60);
 }
 .module_border {
   width: pem(619);
@@ -68,7 +70,26 @@ li {
     }
   }
   .chart-box{
-    height: pem(350);
+    h1{
+      color: #FFF;
+      text-align: right;
+      padding-right: pem(80);
+      // padding-top: pem(30);
+      float: right;
+      line-height: pem(80);
+      // margin-bottom: pem(40);
+      span{
+        font-size: pem(35);
+      }
+    }
+    // span{
+    //   font-size:pem(20);
+    //   font-weight:400;
+    //   color:rgba(134,136,147,1);
+    //   line-height:pem(48);
+    //   padding-left: pem(80);
+    // }
+    height: pem(400);
   }
 }
 .main_btn {
@@ -77,6 +98,7 @@ li {
   display: flex;
   flex-direction: row;
   justify-content: space-around;
+  padding-top:pem(30);
   div {
     width: pem(300);
     height: pem(80);

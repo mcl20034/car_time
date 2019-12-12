@@ -15,7 +15,7 @@ li {
 .box-bg {
   width: 100%;
   height: pem(324);
-  content: url("../../images/login_back.png");
+  content: url("../../images/down_bg.png");
 }
 .header {
   height: pem(324);
@@ -23,14 +23,14 @@ li {
   position: absolute;
   top: 0;
   left: 0;
-  .box-logo {
-    height: pem(50);
-    margin-top: pem(30);
-    margin-left: pem(30);
-    content: url("../../images/login_logo.png");
-  }
+  // .box-logo {
+  //   height: pem(50);
+  //   margin-top: pem(30);
+  //   margin-left: pem(30);
+  //   content: url("../../images/login_logo.png");
+  // }
   .box-tit {
-    padding-top: pem(50);
+    padding-top: pem(100);
     color: #fff;
     text-align: center;
     p {
@@ -107,5 +107,20 @@ li {
       width: pem(30);
       padding: pem(10);
     }
+  }
+}
+.mask-box{
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: rgba(0,0,0,.6);
+  img{
+    height: pem(165);
+    float: right;
+    margin-right: pem(40);
+    margin-top: pem(10);
+    content: url("../../images/click.png");
   }
 }
