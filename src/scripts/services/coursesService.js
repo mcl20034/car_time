@@ -22,7 +22,12 @@ export default class CoursesService extends BaseService {
    * }
    * @return {any} 返回列表信息
    */
-  async getDetail(data) {
-    return this.getData('getDetail', data);
+  async login(data) {
+    return this.getData('login', data,'get');
   }
+
+  async ValidateImageServlet(data) {
+    return this.getData('ValidateImageServlet', data,'get');
+  }
+  
 }

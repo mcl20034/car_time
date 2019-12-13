@@ -28,12 +28,12 @@ console.log('ip is:',process.env.localIP);
 const params = {
   port: 3333,
   env: "dev",
-  publicPath: `//172.16.4.39:3333`,
+  publicPath: `//localhost:3333`,
   build: `build/apollo/${projectName}/${version}`,
   proxy: {
     context: pkg.proxy,
     options: {
-      target: "http://localhost:8080",
+      target: "http://47.93.223.88:8080/",
       changeOrigin: true
     }
   }
