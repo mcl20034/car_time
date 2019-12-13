@@ -1,5 +1,5 @@
 import React from 'react';
-import { observable } from "mobx";
+import { observable, action, computed } from 'mobx';
 import { observer, inject, useLocalStore } from 'mobx-react';
 import { Link } from 'react-router-dom';
 import ReactDOM from 'react-dom';
@@ -60,6 +60,7 @@ class App extends React.Component {
   }
   componentDidMount() {
     // this.getOption()
+    this.getDate
     let u = navigator.userAgent
     console.log('console log for chrom u -=-==-=-', u);
     let android = u.indexOf('Android') > -1 || u.indexOf('Linux') > -1 //android终端或uc浏览器
@@ -76,26 +77,12 @@ class App extends React.Component {
       })
     }
   }
-
+ 
   componentWillMount() {
   }
+
   getOption = () => {
     const { currencyType } = this.state
-    // var base = +new Date(1968, 9, 3);
-    // var oneDay = 24 * 3600 * 1000;
-    // var date = [];
-
-    // var data = [Math.random() * 300];
-
-    // for (var i = 1; i < 20000; i++) {
-    //     var now = new Date(base += oneDay);
-    //     date.push([now.getFullYear(), now.getMonth() + 1, now.getDate()].join('/'));
-    //     data.push(Math.round((Math.random() - 0.5) * 20 + data[i - 1]));
-    // }
-    // console.log('console log for chrom date', date);
-    // console.log('console log for chrom data', data);
-
-
     let data = [];
     let date = [];
     let year = new Date().getFullYear() + '.';
@@ -117,7 +104,7 @@ class App extends React.Component {
     date = date.reverse()
     console.log('console log for chrom date', date);
     for (let i = 1; i < 280; i++) {
-      data.push(((Math.random()+1) * 2000).toFixed(2))
+      data.push(((Math.random() + 1) * 2000).toFixed(2))
     }
     console.log('console log for chrom data', data);
     let option = {
@@ -131,7 +118,7 @@ class App extends React.Component {
         // left: 'left',
         text: '   ',
         subtext: `      ${year}${month}${day}`
-    },
+      },
       xAxis: {
         type: 'category',
         data: date,
@@ -193,9 +180,6 @@ class App extends React.Component {
       currencyType: type,
     })
   }
-  toLogin = () => {
-    this.props.histroy
-  }
   colseBottomDown = () => {
     this.setState({
       bottomDownShow: false
@@ -204,7 +188,7 @@ class App extends React.Component {
   render() {
     const { currencyType, bottomDownShow, IOSOrAndroid } = this.state
     console.log('console log for chrom currencyType', currencyType);
-   
+
     return (
       <div className="app">
         <div >
@@ -229,17 +213,19 @@ class App extends React.Component {
                   }
                 </ul>
                 <div className='chart-box'>
-                    <h1>1{currencyType} = <span>￥</span>{535345.3}</h1>
-                    <div style={{height:'100%'}}>
-                    <ReactEcharts option={this.getOption()} style={{height:'120%'}}/>
-                    </div>
+                  <h1>1{currencyType} = <span>￥</span>{535345.3}</h1>
+                  <div style={{ height: '100%' }}>
+                    <ReactEcharts option={this.getOption()} style={{ height: '100%' }} />
+                  </div>
                 </div>
               </div>
               <div className='main_btn'>
                 <Link to="/login">
-                  <div className='border-btn' onClick={this.toLogin}>登录</div>
+                  <div className='border-btn'>登录</div>
                 </Link>
-                <div className='regist'>注册</div>
+                <Link to="/register">
+                  <div className='regist' >注册</div>
+                </Link>
               </div>
             </div>
           </div>

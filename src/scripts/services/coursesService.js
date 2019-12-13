@@ -25,4 +25,7 @@ export default class CoursesService extends BaseService {
   async getDetail(data) {
     return this.getData('getDetail', data);
   }
+  // async getDate (data) {
+  //   return this.getOptionData('getOptionData', data);
+  // }
 }
