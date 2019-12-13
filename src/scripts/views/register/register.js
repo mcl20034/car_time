@@ -1,8 +1,8 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { observable } from "mobx";
 import { observer, inject } from 'mobx-react';
 import './register.scss';
-import { InputItem, List, Flex, AgreeItem } from 'antd-mobile';
 
 // const REGISTER_type = [
 //   {
@@ -64,57 +64,63 @@ class Login extends React.Component {
                 </div>
             </div>
             <div className='tab-main-box'>
-              {
-                regType == 'phone_num' ? <div>
-                  <List>
-                    <div className='input-box' style={{ display: 'flex' }}>
-                      <span style={{ paddingRight: '5%' }}>+86</span>
-                      <InputItem
-                        style={{ width: '100px' }}
-                        clear
-                        ref={ref => this.inputNumber = ref}
-                        value={phone}
-                        type='number'
-                        placeholder='请输入手机号'
-                        onChange={this.changePhone}
-                      > </InputItem>
-                    </div>
-                    <div className='input-box'>
-                      <InputItem
-                        placeholder="请输入您的密码"
-                        clear
-                        type={'password'}
-                        moneyKeyboardAlign="left"
-                      ></InputItem>
-                    </div>
-                    <div className='input-box'>
-                      <InputItem
-                        placeholder="请输入验证码"
-                        clear
-                        type='number'
-                        moneyKeyboardAlign="left"
-                      ></InputItem>
-                      <div className='get-code-btn' >获取验证码</div>
-                    </div>
-                    <div className='input-box'>
-                      <InputItem
-                        placeholder="请输入推荐人UID（选填）"
-                        clear
-                        type='text'
+              <div>
+                {
+                  regType == 'phone_num' ? <div className='input-box' style={{ display: 'flex' }}>
+                    <span style={{ paddingRight: '5%' }}>+86</span>
+                    <input
+                      style={{ width: '100%' }}
+                      type='number'
+                      placeholder='请输入手机号'
+                      onChange={this.changePhone}
+                    />
+                  </div> : <div className='input-box'>
+                      <input
                         style={{ width: '100%' }}
-                      ></InputItem>
+                        type='text'
+                        placeholder='请输入邮箱地址'
+                        onChange={this.changePhone}
+                      />
                     </div>
-                  </List>
-                  <div class="switch-list">
-                    <input type='checkbox' style={{background:'#FFF'}}/>
-                    我已阅读并同意
+                }
+                <div className='input-box'>
+                  <input
+                    placeholder="请输入您的密码"
+                    type='password'
+                  />
+                </div>
+                <div className='input-box'>
+                  <input
+                    placeholder="请输入验证码"
+                    type='number'
+                  />
+                  <div className='get-code-btn' >获取验证码</div>
+                </div>
+                <div className='input-box'>
+                  <input
+                    placeholder="请输入推荐人UID（选填）"
+                    clear
+                    type='text'
+                    style={{ width: '100%' }}
+                  />
+                </div>
+                <div class="switch-list">
+                  <input type='checkbox' style={{ background: '#FFF' }} />
+                  我已阅读并同意 <span style={{ color: '#A77E45' }}>《用户协议》</span>
+                </div>
+                <div className='login-child-button'>
+                  <img />
+                  <span>立即注册</span>
+                </div>
+                <Link to="/login">
+                  <div className='regist-btn' style={{ textAlign: 'right' }}>
+                    <span className='login-child-resig'>登录</span>
+                  </div>
+                </Link>
 
-                  </div>
-                </div> : <div>
-                    邮箱
-                  </div>
-              }
+              </div>
             </div>
+
           </div>
 
           {/* <InputItem

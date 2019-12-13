@@ -7,7 +7,6 @@ import App from '../views/appointCourses/app';
 import Login from '../views/login/login'
 import Register from '../views/register/register'
 import Download from '../views/download/download'
-import BasicInputExample from '../views/download/basicInputExample'
 
 import { Provider } from 'mobx-react';
 import store from '../mobx';
@@ -21,7 +20,6 @@ ReactDOM.render(
         <Route exact path="/login" component={Login} />
         <Route exact path="/register" component={Register} />
         <Route exact path="/download" component={Download} />
-        <Route exact path="/basicInputExample" component={BasicInputExample} />
       </Switch>
     </HashRouter>
   </Provider>
