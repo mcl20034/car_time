@@ -28,7 +28,7 @@ console.log('ip is:',process.env.localIP);
 const params = {
   port: 3333,
   env: "dev",
-  publicPath: `//cdn.51talk.com/apollo/${projectName}/${version}`,
+  publicPath: `//172.16.4.39:3333`,
   build: `build/apollo/${projectName}/${version}`,
   proxy: {
     context: pkg.proxy,
@@ -52,7 +52,6 @@ program
   .parse(process.argv);
 if (program.dev) {
 
-  params.publicPath = '';
   (async function () {
     dev();
   })();
