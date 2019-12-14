@@ -1,0 +1,127 @@
+@import "../../../css/_base.scss";
+body {
+  @include fsp(24);
+}
+input{outline: none;}
+.regist {
+  width: 100%;
+  height: 100vh;
+  background-color: #f7f7f7;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.regist-img{
+  width: 100%;
+  height: pem(324);
+  content: url('../../images/login_back.png');
+}
+.regist-logo{
+  width: pem(157);
+  height: pem(70);
+  margin-top: pem(80);
+  position: absolute;
+  content: url('../../images/login_logo.png');
+}
+.regist-child{
+  width: pem(690);
+  border-radius: pem(20);
+  background-color: white;
+  position: absolute;
+  margin-top: pem(218);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.regist-child-title{
+  width: pem(628);
+  color: rgba(4, 16, 49, 1);
+  @include fsp(32);
+  font-weight: bold;
+  margin-top: pem(49);
+}
+.regist-child-input{
+  width: pem(630);
+}
+.reg-main{
+  width: 100%;
+  margin-top: pem(40);
+}
+.tab-nav-box{
+  // width: 100%;
+  display: flex;
+  justify-content: space-between;
+  padding:0 pem(110);
+  border-bottom: pem(1) solid rgba(225,226,230,1);
+  div{
+    // width: 40%;
+    text-align: center;
+    font-size:pem(28);
+    font-weight:400;
+    color:rgba(102,102,102,1);
+    line-height:pem(48);
+    padding:pem(20) pem(5);
+  }
+  .tab-active{
+    color:rgba(44,163,218,1);
+    border-bottom:pem(4) solid  rgba(44,163,218,1);
+  }
+}
+// .tab-main-box{
+//   width: 100%;
+//   padding: 0 pem(30);
+// }
+.input-box{
+  width: 90%;
+  // height: pem(30);
+  margin: 0 auto;
+  border-bottom: 1px solid rgba(225,226,230,1);
+  font-size:pem(24);
+  font-weight:400;
+  color:rgba(153,153,153,1);
+  line-height:pem(48);
+  padding-top:pem(60);
+  position: relative;
+}
+.get-code-btn{
+  width:pem(302);
+height:pem(80);
+background:rgba(44,163,218,1);
+border-radius:pem(10);
+font-size:pem(26);
+font-weight:400;
+color:rgba(255,255,255,1);
+line-height:pem(80);
+text-align: center;
+float: right;
+position: absolute; 
+bottom: -1px;
+right: 0;
+// padding:
+}
+.switch-list{
+  padding-top: pem(70);
+  width: 90%;
+  margin: 0 auto;
+  font-size:pem(24);
+  font-weight:400;
+  color:rgba(0,0,0,1);
+  line-height:pem(48);
+  input{
+    margin-right: pem(13);
+    position: relative;
+  }
+  input:checked  {
+    background: #ec6337;
+  }
+}
+.login-child-button{
+  margin: pem(40) auto pem(30);
+}
+
+.regist-btn{
+  width: 90%;
+  margin: 0 auto;
+  margin-bottom: pem(50);  
+}

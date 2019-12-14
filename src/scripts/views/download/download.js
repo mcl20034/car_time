@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { observable } from "mobx";
 import { observer, inject } from 'mobx-react';
 import './download.scss';
@@ -43,7 +44,8 @@ class Download extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      maskShow: false
+      maskShow: false,
+      url: ''
     }
   }
   componentDidMount() {
@@ -51,23 +53,35 @@ class Download extends React.Component {
   }
   downloadApp = (type) => {
     console.log('console log for chrom type', type);
-    var ua = navigator.userAgent.toLowerCase();//获取判断用的对象
-    if (ua.match(/MicroMessenger/i) == "micromessenger") {
+    var u = navigator.userAgent;
+    // console.log('console log for chrom u -=-==-=-', u);
+    let wx = u.indexOf('MicroMessenger') > -1
+    let android = u.indexOf('Android') > -1 || u.indexOf('Linux') > -1 //android终端或uc浏览器
+    let iPhone = u.indexOf('iPhone') > -1 //是否为iPhone或者QQHD浏览器
+    let iPad = u.indexOf('iPad') > -1 //是否iPad
+    if (wx) {
       //在微信中打开
       this.setState({
         maskShow: true
       })
-    } else if (browser.versions.ios) {
-      //在IOS浏览器打开
-      console.log('ios-browser');
-    } else if (browser.versions.android) {
+    } else if (android) {
+      this.setState({
+        url: 'https://tftc-otc.oss-cn-hongkong.aliyuncs.com/hk/upload/chuangshi/app/app-yingyongbao-release.apk'
+      })
       //在安卓浏览器打开
       console.log('android-browser');
+    }
+    if (iPhone || iPad) {
+      //在IOS浏览器打开
+      this.setState({
+        url: 'https://tftc-otc.oss-cn-hongkong.aliyuncs.com/hk/upload/chuangshi/app/px362_YOAEX_Ch.ipa'
+      })
+      console.log('ios-browser');
     }
   }
 
   render() {
-    const { maskShow } = this.state
+    const { maskShow, url } = this.state
     let search = this.props.location && this.props.location.search || ''
     let type = search && search.split('=')[1] || ''
     return (
@@ -99,17 +113,21 @@ class Download extends React.Component {
         <div className='bottom'>
           {
             type == 'IOS' ?
-              <div className='bottom-btn' onClick={this.downloadApp.bind(null, 'IOS')}>
-                <span><img src={IOS} /></span>
-                IOS下载
-          </div> :
-              <div className='bottom-btn' onClick={this.downloadApp.bind(null, 'Android')}>
-                <span><img src={Android} /></span>
-                安卓下载
-          </div>
+              <a href={url} >
+                <div className='bottom-btn' onClick={this.downloadApp.bind(null, 'IOS')}>
+                  <span><img src={IOS} /></span>
+                  IOS下载
+                </div>
+              </a> :
+              <a href={url}>
+                <div className='bottom-btn' onClick={this.downloadApp.bind(null, 'Android')}>
+                  <span><img src={Android} /></span>
+                  安卓下载
+                </div>
+              </a>
           }
         </div>
-        { maskShow && <div className='mask-box'><img /></div> }
+        {maskShow && <div className='mask-box'><img /></div>}
       </div>
     )
   }
