@@ -6,4 +6,6 @@ export default {
   "send_sms": `user/send_sms.html?r=${new Date().getTime()}`, // test
   "send_reg_email": `user/send_reg_email.html?r=${new Date().getTime()}`, // test
   "register": `register?r=${new Date().getTime()}`, // test
+  "getIndexInfoPrice": `real/getIndexInfoPrice.html?r=${new Date().getTime()}`, // test
+
 };

@@ -10,31 +10,32 @@ import Currency from '../../images/down_currency.png'
 import Public from '../../images/down_public.png'
 import Android from '../../images/android.png'
 import IOS from '../../images/ios.png'
+import { Toast } from '../../components';
 
 const MAIN_LIST = [
   {
     id: 'team',
     title: '专业团队',
     context: '集合全行业顶尖人才',
-    imageUrl: Team,
+    imageUrl: 'img-team',
   },
   {
     id: 'currency',
     title: '优质币种',
     context: '严格的评选机制筛选出行业内最优质的币种',
-    imageUrl: Currency,
+    imageUrl: 'img-currency',
   },
   {
     id: 'public',
     title: '公开透明',
     context: '根据平台的透明机制，时时公示最新的资产分配',
-    imageUrl: Public,
+    imageUrl: 'img-public',
   },
   {
     id: 'ellipse',
     title: '高效撮合',
     context: '高性能撮合引擎',
-    imageUrl: Ellipse,
+    imageUrl: 'img-ellipse',
   }
 ]
 @inject('rootStore')
@@ -64,18 +65,17 @@ class Download extends React.Component {
       this.setState({
         maskShow: true
       })
+      return
     } else if (android) {
-      this.setState({
-        url: 'https://tftc-otc.oss-cn-hongkong.aliyuncs.com/hk/upload/chuangshi/app/app-yingyongbao-release.apk'
-      })
+      window.location.href = 'https://tftc-otc.oss-cn-hongkong.aliyuncs.com/hk/upload/chuangshi/app/app-yingyongbao-release.apk'
+      // this.setState({
+      //   url: 'https://tftc-otc.oss-cn-hongkong.aliyuncs.com/hk/upload/chuangshi/app/app-yingyongbao-release.apk'
+      // })
       //在安卓浏览器打开
       console.log('android-browser');
-    }
-    if (iPhone || iPad) {
+    } else if (iPhone || iPad) {
       //在IOS浏览器打开
-      this.setState({
-        url: 'https://tftc-otc.oss-cn-hongkong.aliyuncs.com/hk/upload/chuangshi/app/px362_YOAEX_Ch.ipa'
-      })
+      window.location.href = 'https://tftc-otc.oss-cn-hongkong.aliyuncs.com/hk/upload/chuangshi/app/px362_YOAEX_Ch.ipa'
       console.log('ios-browser');
     }
   }
@@ -101,7 +101,7 @@ class Download extends React.Component {
           {
             MAIN_LIST.map(data => {
               return <div className='list'>
-                <div className='icon'><img src={data.imageUrl} /></div>
+                <div className='icon'><img className={data.imageUrl} /></div>
                 <div className='context'>
                   <p>{data.title}</p>
                   <span>{data.context}</span>
@@ -113,15 +113,15 @@ class Download extends React.Component {
         <div className='bottom'>
           {
             type == 'IOS' ?
-              <a href={url} >
-                <div className='bottom-btn' onClick={this.downloadApp.bind(null, 'IOS')}>
-                  <span><img src={IOS} /></span>
+              <a >
+                <div className='bottom-btn' onClick={() => { this.downloadApp('IOS') }}>
+                  <span><img className='img-ios' /></span>
                   IOS下载
                 </div>
               </a> :
-              <a href={url}>
-                <div className='bottom-btn' onClick={this.downloadApp.bind(null, 'Android')}>
-                  <span><img src={Android} /></span>
+              <a >
+                <div className='bottom-btn' onClick={() => { this.downloadApp('Android') }}>
+                  <span><img className='img-android' /></span>
                   安卓下载
                 </div>
               </a>
