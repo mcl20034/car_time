@@ -40,7 +40,8 @@
   "proxy": [
     "/51test",
     "/login.html",
-    "/servlet"
+    "/servlet",
+    "/kline"
   ],
   "dependencies": {
     "@babel/runtime": "^7.7.2",

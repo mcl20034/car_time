@@ -26,25 +26,29 @@ export default class BaseService {
     }
   }
 
-  async getData(urlKey, data, method = 'post', showErr = true) {
+  async getData(urlKey, data, method = 'post', showErr = true, header) {
     let _this = this;
+    let headers = {
+      'X-Requested-Width': 'XMLHttpRequest',
+      'Content-Type': 'application/json',
+    }
+    if (header) {
+      headers['Mobile-Cookie'] = header.Cookie
+    }
     // console.log('请求url', _this.getRequestApiUrl(urlKey));
     return new Promise(function (resolve, reject) {
       axios({
         method: method,
-        headers: {
-          'X-Requested-Width': 'XMLHttpRequest',
-          'Content-Type': 'application/json'
-        },
+        headers: headers,
         url: _this.getRequestApiUrl(urlKey),
         data: data || {},
         params: method === 'get' ? data : {}
       }).then(res => {
         res = res.data;
-        if (res.code !== 10000 && showErr) {
-          console.warn(res.message || '网络繁忙，请稍候再试');
-          // vue.$toast(res.message || '网络繁忙，请稍候再试');
-        }
+        // if (res.code !== 10000 && showErr) {
+        //   console.warn(res.message || '网络繁忙，请稍候再试');
+        //   // vue.$toast(res.message || '网络繁忙，请稍候再试');
+        // }
         resolve(res);
       }).catch(err => {
         // vue.$toast('网络繁忙，请稍候再试');

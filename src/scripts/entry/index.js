@@ -10,7 +10,7 @@ import Download from '../views/download/download'
 
 import { Provider } from 'mobx-react';
 import store from '../mobx';
-import { HashRouter, Route, Switch,hashHistory } from 'react-router-dom';
+import { HashRouter, Route, Switch,hashHistory,Redirect } from 'react-router-dom';
 
 ReactDOM.render(
   <Provider rootStore={store}>
@@ -20,6 +20,7 @@ ReactDOM.render(
         <Route exact path="/login" component={Login} />
         <Route exact path="/register" component={Register} />
         <Route exact path="/download" component={Download} />
+        <Redirect to="/" />
       </Switch>
     </HashRouter>
   </Provider>

@@ -125,3 +125,28 @@ right: 0;
   margin: 0 auto;
   margin-bottom: pem(50);  
 }
+.login-child-codes {
+  width: pem(610);
+  border-bottom: rgba(225, 226, 230, 1) solid 1px;
+  color: rgba(4, 16, 49, 1);
+  @include fsp(26);
+  padding-left: pem(9);
+  line-height: pem(48);
+
+}
+.login-child-divs {
+  width: pem(610);
+  margin-top: pem(60);
+  position: relative;
+  height: pem(70);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  margin-left: pem(30);
+  img{
+    position: absolute;
+    right:pem(10);
+    top:0px;
+    height: pem(60);
+  }
+}

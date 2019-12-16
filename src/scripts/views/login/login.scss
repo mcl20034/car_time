@@ -49,6 +49,30 @@ body {
   line-height: pem(48);
   margin-top: pem(80);
 }
+.login-child-code {
+  width: pem(630);
+  border-bottom: rgba(225, 226, 230, 1) solid 1px;
+  color: rgba(4, 16, 49, 1);
+  @include fsp(26);
+  padding-left: pem(9);
+  line-height: pem(48);
+
+}
+.login-child-div {
+  width: pem(630);
+  margin-top: pem(80);
+  position: relative;
+  height: pem(70);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  img{
+    position: absolute;
+    right:pem(10);
+    top:0px;
+    height: pem(60);
+  }
+}
 .login-child-password {
   width: pem(630);
   border-bottom: rgba(225, 226, 230, 1) solid 1px;

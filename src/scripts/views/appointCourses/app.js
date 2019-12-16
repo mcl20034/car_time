@@ -16,7 +16,8 @@ import Share from '../../images/share.png'
 import Public from '../../images/public.png'
 import Android from '../../images/android.png'
 import IOS from '../../images/ios.png'
-
+import Service from '../../services/coursesService';
+const service = new Service();
 // import { Card } from 'antd';
 // import echartTheme from './../themeLight'
 //不是按需加载的话文件太大
@@ -33,22 +34,23 @@ import ReactEcharts from 'echarts-for-react';
 
 const CURRENCT_TYPE = [
   {
-    id: 'BTC',
+    id: '44',
     name: 'BTC'
   },
   {
-    id: 'ETH',
+    id: '45',
     name: 'ETH'
   },
   {
-    id: 'BHU',
-    name: 'BHU'
+    id: '58',
+    name: 'LTC'
   }
 ]
 @inject('rootStore')
 @observer
 class App extends React.Component {
-  @observable time = 1;
+  @observable option = {};
+  @observable money = 0;
   constructor(props) {
     super(props);
     this.state = {
@@ -62,7 +64,6 @@ class App extends React.Component {
     // this.getOption()
     this.getDate
     let u = navigator.userAgent
-    console.log('console log for chrom u -=-==-=-', u);
     let android = u.indexOf('Android') > -1 || u.indexOf('Linux') > -1 //android终端或uc浏览器
     let iPhone = u.indexOf('iPhone') > -1 //是否为iPhone或者QQHD浏览器
     let iPad = u.indexOf('iPad') > -1 //是否iPad
@@ -76,13 +77,34 @@ class App extends React.Component {
         IOSOrAndroid: 'IOS'
       })
     }
-  }
- 
-  componentWillMount() {
+    this.getData();
   }
 
-  getOption = () => {
-    const { currencyType } = this.state
+  getData = () => {
+    service.fullperiod({
+      step: 60,
+      symbol: this.getCurrentId()
+    }).then((res) => {
+      console.log('console log to chrome res', res);
+      this.getOption(res)
+      this.money = res[res.length - 1][4]
+    }).catch((err) => {
+      console.log('console log to chrome err', err);
+    });
+  }
+
+  getCurrentId = () => {
+    let id = ''
+    for (let i = 0; i < CURRENCT_TYPE.length; i++) {
+      if (this.state.currencyType === CURRENCT_TYPE[i].name) {
+        id = CURRENCT_TYPE[i].id;
+      }
+    }
+    return id;
+  }
+
+
+  getOption = (res) => {
     let data = [];
     let date = [];
     let year = new Date().getFullYear() + '.';
@@ -90,7 +112,6 @@ class App extends React.Component {
     let day = new Date().getDate();
     let hours = new Date().getHours()
     let minutes = new Date().getMinutes()
-    console.log('console log for chrom hours', hours);
     for (let i = 0; i < 5; i++) {
       let j = i == 0 ? minutes : 60
       for (j; j >= 0; j--) {
@@ -102,11 +123,9 @@ class App extends React.Component {
       }
     }
     date = date.reverse()
-    console.log('console log for chrom date', date);
-    for (let i = 1; i < 280; i++) {
-      data.push(((Math.random() + 1) * 2000).toFixed(2))
+    for (let i = 1; i < res.length; i++) {
+      data.push(res[i][4])
     }
-    console.log('console log for chrom data', data);
     let option = {
       tooltip: {
         trigger: 'axis',
@@ -146,7 +165,7 @@ class App extends React.Component {
       ],
       series: [
         {
-          name: '模拟数据',
+          name: '数据',
           type: 'line',
           data: data,
           smooth: true,
@@ -171,13 +190,14 @@ class App extends React.Component {
         }
       ]
     };
-    return option
+    this.option = option
   }
 
   changeType = (type) => {
-    console.log('console log for chrom type', type);
     this.setState({
       currencyType: type,
+    },()=>{
+      this.getData();
     })
   }
   colseBottomDown = () => {
@@ -187,8 +207,6 @@ class App extends React.Component {
   }
   render() {
     const { currencyType, bottomDownShow, IOSOrAndroid } = this.state
-    console.log('console log for chrom currencyType', currencyType);
-
     return (
       <div className="app">
         <div >
@@ -203,9 +221,8 @@ class App extends React.Component {
                 <ul>
                   {
                     CURRENCT_TYPE.map(type => {
-                      console.log('console log for chrom type', type);
                       return (
-                        <li className={`${currencyType == type.id ? 'active' : ''}`} onClick={this.changeType.bind(this, type.id)}>
+                        <li className={`${currencyType == type.name ? 'active' : ''}`} onClick={this.changeType.bind(this, type.name)}>
                           {type.name}
                         </li>
                       )
@@ -213,9 +230,9 @@ class App extends React.Component {
                   }
                 </ul>
                 <div className='chart-box'>
-                  <h1>1{currencyType} = <span>￥</span>{535345.3}</h1>
+                  <h1>1{currencyType} = <span>￥</span>{this.money}</h1>
                   <div style={{ height: '100%' }}>
-                    <ReactEcharts option={this.getOption()} style={{ height: '100%' }} />
+                    <ReactEcharts option={this.option} style={{ height: '100%' }} />
                   </div>
                 </div>
               </div>
