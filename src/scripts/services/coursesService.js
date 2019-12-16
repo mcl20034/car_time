@@ -33,6 +33,14 @@ export default class CoursesService extends BaseService {
   async fullperiod(data) {
     return this.getData('fullperiod', data, 'get');
   }
-
-
+  async send_sms(data, header) {
+    return this.getData('send_sms', data, 'get', true, header);
+  }
+  async send_reg_email(data) {
+    return this.getData('send_reg_email', data, 'get');
+  }
+  async register(data, header) {
+    return this.getData('register', data, 'get', true, header);
+  }
+  
 }

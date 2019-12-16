@@ -17,7 +17,7 @@ ReactDOM.render(
     <HashRouter history={hashHistory}>
       <Switch>
         <Route exact path="/" component={App} />
-        <Route exact path="/login" component={Login} />
+        <Route exact path="/login/:id" component={Login} />
         <Route exact path="/register" component={Register} />
         <Route exact path="/download" component={Download} />
         <Redirect to="/" />
