@@ -8,14 +8,6 @@ import './app.scss';
 import SwitchRow from './components/switchRow';
 import ExplainRow from './components/explainRow';
 import { Modal, SlotModal, Toast } from '../../components';
-import Lock from '../../images/lock.png'
-import Team from '../../images/team.png'
-import Ellipse from '../../images/ellipse.png'
-import Currency from '../../images/currency.png'
-import Share from '../../images/share.png'
-import Public from '../../images/public.png'
-import Android from '../../images/android.png'
-import IOS from '../../images/ios.png'
 import Service from '../../services/coursesService';
 const service = new Service();
 // import { Card } from 'antd';
@@ -196,7 +188,7 @@ class App extends React.Component {
   changeType = (type) => {
     this.setState({
       currencyType: type,
-    },()=>{
+    }, () => {
       this.getData();
     })
   }
@@ -206,6 +198,21 @@ class App extends React.Component {
     })
   }
   render() {
+    let { location } = this.props;
+    let params = '';
+    if (location.search) {
+      let search = location.search;
+      search = search.replace('?', '');
+      let searchs = search.split('&');
+      for (let index = 0; index < searchs.length; index++) {
+        let childs = searchs[index].split('=');
+        if (Array.isArray(childs) && childs.length > 1) {
+          if (childs[0] === 'uid') {
+            params = childs[1]
+          }
+        }
+      }
+    }
     const { currencyType, bottomDownShow, IOSOrAndroid } = this.state
     return (
       <div className="app">
@@ -240,7 +247,7 @@ class App extends React.Component {
                 <Link to="/login">
                   <div className='border-btn'>登录</div>
                 </Link>
-                <Link to="/register">
+                <Link to={params ? `/register?uid=${params}` : "/register"}>
                   <div className='regist' >注册</div>
                 </Link>
               </div>
@@ -251,32 +258,32 @@ class App extends React.Component {
             <div className='module_border' />
             <div className='module_main_two'>
               <li>
-                <div><img src={Team} /></div>
+                <div><img className='img-team' /></div>
                 <p>专业团队</p>
                 <span>集合全行业顶尖人才</span>
               </li>
               <li>
-                <div><img src={Lock} /></div>
+                <div><img className='img-lock' /></div>
                 <p>安全风控</p>
                 <span>世界最顶级的金融级安全方案</span>
               </li>
               <li>
-                <div><img src={Ellipse} /></div>
+                <div><img className='img-ellipse' /></div>
                 <p>高效撮合</p>
                 <span>高性能撮合引擎</span>
               </li>
               <li>
-                <div><img src={Currency} /></div>
+                <div><img className='img-currency' /></div>
                 <p>优质币种</p>
                 <span>严格的评选机制筛选出行业内最优质的币种</span>
               </li>
               <li>
-                <div><img src={Public} /></div>
+                <div><img className='img-public' /></div>
                 <p>公开透明</p>
                 <span>根据平台的透明机制，时时公示最新的资产分配</span>
               </li>
               <li>
-                <div><img src={Share} /></div>
+                <div><img className='img-share'/></div>
                 <p>共享自制</p>
                 <span>节点联盟铸造共享收益的自治组织</span>
               </li>
@@ -294,7 +301,7 @@ class App extends React.Component {
                   }
                 }>
                   <div className='border-btn'>
-                    <span><img src={Android} /></span>
+                    <span><img  className='img-android'/></span>
                     安卓下载
                   </div>
                 </Link>
@@ -303,7 +310,7 @@ class App extends React.Component {
                   search: 'type=IOS'
                 }}>
                   <div className='border-btn'>
-                    <span><img src={IOS} /></span>
+                    <span><img className='img-ios' /></span>
                     IOS下载
                   </div>
                 </Link>

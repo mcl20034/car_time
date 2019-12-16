@@ -41,11 +41,32 @@ class Login extends React.Component {
     }
     let adaptor = {
       dev: '', // 开发环境接口地址
-      prod: '//appkidi.51talk.com' // 上线环境接口地址
+      prod: '' // 上线环境接口地址
     };
     // console.log(`环境是${process.env.NODE_ENV}`);
     this._domain = adaptor[process.env.NODE_ENV];
     this.data = null
+  }
+
+  //WARNING! To be deprecated in React v17. Use componentDidMount instead.
+  componentWillMount() {
+    let { location } = this.props;
+    let params = '';
+    if (location.search) {
+      let search = location.search;
+      search = search.replace('?', '');
+      let searchs = search.split('&');
+      for (let index = 0; index < searchs.length; index++) {
+        let childs = searchs[index].split('=');
+        if (Array.isArray(childs) && childs.length > 1) {
+          if (childs[0] === 'uid') {
+            params = childs[1]
+          }
+        }
+      }
+    }
+    console.log('console log to chrome params',params);
+    this.userincode = params
   }
   componentDidMount() {
     this.getData('ValidateImageServlet', {}, 'get');
@@ -297,6 +318,7 @@ class Login extends React.Component {
                   <input
                     placeholder="请输入推荐人UID（选填）"
                     type='text'
+                    defaultValue={this.userincode}
                     style={{ width: '100%' }}
                     onInput={(e) => {
                       this.userincode = e.target.value

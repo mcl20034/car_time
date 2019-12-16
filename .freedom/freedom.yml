@@ -30,8 +30,8 @@ build:
     args:
       projectID: 2064
       env: prod
-      publicPath: //cdn.51talk.com/apollo/appoint-courses/
-      build: build/apollo/appoint-courses/
+      publicPath: //cdn.51talk.com/apollo/biu/
+      build: build/apollo/biu/
       bundleAnalyzerReportPort: 
       specialVersion: 
 serve:
