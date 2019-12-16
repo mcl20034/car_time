@@ -1,5 +1,5 @@
 {
-  "name": "appoint-courses",
+  "name": "biu",
   "version": "1.0.0",
   "description": "一键约课",
   "main": "index.js",
@@ -41,7 +41,9 @@
     "/51test",
     "/login.html",
     "/servlet",
-    "/kline"
+    "/kline",
+    "/user",
+    "/register"
   ],
   "dependencies": {
     "@babel/runtime": "^7.7.2",

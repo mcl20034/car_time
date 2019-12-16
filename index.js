@@ -24,12 +24,12 @@ function getIPAdress() {
   }
 }
 // process.env.localIP = getIPAdress();
-console.log('ip is:',process.env.localIP);
+console.log('ip is:', process.env.localIP);
 const params = {
   port: 3333,
   env: "dev",
-  publicPath: `//localhost:3333`,
-  build: `build/apollo/${projectName}/${version}`,
+  publicPath: `..`,
+  build: `build`,
   proxy: {
     context: pkg.proxy,
     options: {
@@ -51,10 +51,10 @@ program
   .option('-s, --serve', '编译后运行环境')
   .parse(process.argv);
 if (program.dev) {
-
-  (async function () {
-    dev();
-  })();
+    params.publicPath = '';
+    (async function () {
+      dev();
+    })();
 
 }
 

@@ -23,7 +23,7 @@ class Login extends React.Component {
     super(props);
     let adaptor = {
       dev: '', // 开发环境接口地址
-      prod: '//appkidi.51talk.com' // 上线环境接口地址
+      prod: '' // 上线环境接口地址
     };
     // console.log(`环境是${process.env.NODE_ENV}`);
     this._domain = adaptor[process.env.NODE_ENV];
