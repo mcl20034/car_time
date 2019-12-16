@@ -11,17 +11,6 @@ import apiConf from '../../config/api';
 import { Toast } from '../../components';
 import md5 from 'md5';
 
-// const REGISTER_type = [
-//   {
-//     id:'',
-//     name:'手机注册'
-//   },
-//   {
-//     id:'email',
-//     name:'邮箱注册'
-//   },
-// ]
-
 @inject('rootStore')
 @observer
 class Login extends React.Component {

@@ -126,17 +126,21 @@ class App extends React.Component {
     for (let i = 1; i < res.length; i++) {
       data.push(res[i][4])
     }
+    sortData = _.sortBy(data)
+    console.log("data==============",data)
+    console.log("sortData==============",sortData)
     let option = {
       tooltip: {
         trigger: 'axis',
         position: function (pt) {
+          console.log('console log for chrom pt', pt);
           return [pt[0], '100%'];
         }
       },
       title: {
         // left: 'left',
         text: '   ',
-        subtext: `      ${year}${month}${day}`
+        subtext: `      ${year}${month}${day}`,
       },
       xAxis: {
         type: 'category',
@@ -155,22 +159,22 @@ class App extends React.Component {
       yAxis: {
         type: 'value',
         boundaryGap: false,
-        show: false
+        show: false,
       },
       dataZoom: [{
         type: 'inside',
         start: 0,
-        end: 1000
+        end: 100
       }
       ],
       series: [
         {
-          name: '数据',
+          // name: '数据',
           type: 'line',
           data: data,
-          smooth: true,
+          // smooth: true,
           symbol: 'none',
-          sampling: 'average',
+          // sampling: 'average',
           itemStyle: {
             color: '#5C72AE',
           },
@@ -251,32 +255,32 @@ class App extends React.Component {
             <div className='module_border' />
             <div className='module_main_two'>
               <li>
-                <div><img src={Team} /></div>
+                <div><img /></div>
                 <p>专业团队</p>
                 <span>集合全行业顶尖人才</span>
               </li>
               <li>
-                <div><img src={Lock} /></div>
+                <div><img /></div>
                 <p>安全风控</p>
                 <span>世界最顶级的金融级安全方案</span>
               </li>
               <li>
-                <div><img src={Ellipse} /></div>
+                <div><img /></div>
                 <p>高效撮合</p>
                 <span>高性能撮合引擎</span>
               </li>
               <li>
-                <div><img src={Currency} /></div>
+                <div><img /></div>
                 <p>优质币种</p>
                 <span>严格的评选机制筛选出行业内最优质的币种</span>
               </li>
               <li>
-                <div><img src={Public} /></div>
+                <div><img /></div>
                 <p>公开透明</p>
                 <span>根据平台的透明机制，时时公示最新的资产分配</span>
               </li>
               <li>
-                <div><img src={Share} /></div>
+                <div><img  /></div>
                 <p>共享自制</p>
                 <span>节点联盟铸造共享收益的自治组织</span>
               </li>
