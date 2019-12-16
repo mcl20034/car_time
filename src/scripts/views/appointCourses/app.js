@@ -8,6 +8,7 @@ import './app.scss';
 import SwitchRow from './components/switchRow';
 import ExplainRow from './components/explainRow';
 import { Modal, SlotModal, Toast } from '../../components';
+import {sort} from 'lodash';
 import Service from '../../services/coursesService';
 const service = new Service();
 // import { Card } from 'antd';
@@ -77,11 +78,11 @@ class App extends React.Component {
       step: 60,
       symbol: this.getCurrentId()
     }).then((res) => {
-      console.log('console log to chrome res', res);
+      // console.log('console log to chrome res', res);
       this.getOption(res)
       this.money = res[res.length - 1][4]
     }).catch((err) => {
-      console.log('console log to chrome err', err);
+      // console.log('console log to chrome err', err);
     });
   }
 
@@ -118,17 +119,24 @@ class App extends React.Component {
     for (let i = 1; i < res.length; i++) {
       data.push(res[i][4])
     }
+    let sortData = data.concat()
+    sortData.sort(function (a, b) { return a-b; }); 
+    let min = Math.floor(sortData[0]/40)*40;
+    let datas = []
+    for (let i = 1; i < data.length; i++) {
+      datas.push(data[i] - min)
+    }
     let option = {
-      tooltip: {
-        trigger: 'axis',
-        position: function (pt) {
-          return [pt[0], '100%'];
-        }
-      },
+      // tooltip: {
+      //   trigger: 'axis',
+      //   position: function (pt) {
+      //     // console.log('console log for chrom pt', pt);
+      //     return [`${pt[0]+min*1}`, ''];
+      //   }
+      // },
       title: {
-        // left: 'left',
         text: '   ',
-        subtext: `      ${year}${month}${day}`
+        subtext: `      ${year}${month}${day}`,
       },
       xAxis: {
         type: 'category',
@@ -147,22 +155,22 @@ class App extends React.Component {
       yAxis: {
         type: 'value',
         boundaryGap: false,
-        show: false
+        show: false,
       },
       dataZoom: [{
         type: 'inside',
         start: 0,
-        end: 1000
+        end: 100
       }
       ],
       series: [
         {
-          name: '数据',
+          // name: '数据',
           type: 'line',
-          data: data,
-          smooth: true,
+          data: datas,
+          // smooth: true,
           symbol: 'none',
-          sampling: 'average',
+          // sampling: 'average',
           itemStyle: {
             color: '#5C72AE',
           },
