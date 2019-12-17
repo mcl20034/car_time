@@ -153,7 +153,7 @@ class Login extends React.Component {
             <span>立即登录</span>
           </div>
           <div className='login-child-row'>
-            <span className='login-child-forgat'>忘记密码?</span>
+            {/* <span className='login-child-forgat'>忘记密码?</span> */}
             <Link to='/register'>
               <span className='login-child-resig'>注册账号</span>
             </Link>

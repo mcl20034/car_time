@@ -8,7 +8,7 @@ import './app.scss';
 import SwitchRow from './components/switchRow';
 import ExplainRow from './components/explainRow';
 import { Modal, SlotModal, Toast } from '../../components';
-import {sort} from 'lodash';
+import { forEach } from 'lodash';
 import Service from '../../services/coursesService';
 const service = new Service();
 // import { Card } from 'antd';
@@ -44,6 +44,7 @@ const CURRENCT_TYPE = [
 class App extends React.Component {
   @observable option = {};
   @observable money = 0;
+  @observable indexInfoPrices = null;
   constructor(props) {
     super(props);
     this.state = {
@@ -71,6 +72,25 @@ class App extends React.Component {
       })
     }
     this.getData();
+
+    service.getIndexInfoPrice().then((res) => {
+      console.log('console log to chrome res', res);
+      this.indexInfoPrices = res.data.indexInfoPrices;
+    }).catch((err) => {
+      // console.log('console log to chrome err', err);
+    });
+  }
+
+  getmoney = () => {
+    let money = 0;
+    if (this.indexInfoPrices && Array.isArray(this.indexInfoPrices)) {
+      forEach(this.indexInfoPrices, (item) => {
+        if (item.symbol === this.state.currencyType) {
+          money = Math.floor(item.priceCNY * 100) / 100
+        }
+      });
+    }
+    return money
   }
 
   getData = () => {
@@ -120,8 +140,8 @@ class App extends React.Component {
       data.push(res[i][4])
     }
     let sortData = data.concat()
-    sortData.sort(function (a, b) { return a-b; }); 
-    let min = Math.floor(sortData[0]/40)*40;
+    sortData.sort(function (a, b) { return a - b; });
+    let min = Math.floor(sortData[0] / 40) * 40;
     let datas = []
     for (let i = 1; i < data.length; i++) {
       datas.push(data[i] - min)
@@ -237,7 +257,7 @@ class App extends React.Component {
                   {
                     CURRENCT_TYPE.map(type => {
                       return (
-                        <li className={`${currencyType == type.name ? 'active' : ''}`} onClick={this.changeType.bind(this, type.name)}>
+                        <li key={type.id} className={`${currencyType == type.name ? 'active' : ''}`} onClick={this.changeType.bind(this, type.name)}>
                           {type.name}
                         </li>
                       )
@@ -245,7 +265,7 @@ class App extends React.Component {
                   }
                 </ul>
                 <div className='chart-box'>
-                  <h1>1{currencyType} = <span>￥</span>{this.money}</h1>
+                  <h1>1{currencyType} = <span>￥</span>{this.getmoney()}</h1>
                   <div style={{ height: '100%' }}>
                     <ReactEcharts option={this.option} style={{ height: '100%' }} />
                   </div>
@@ -291,7 +311,7 @@ class App extends React.Component {
                 <span>根据平台的透明机制，时时公示最新的资产分配</span>
               </li>
               <li>
-                <div><img className='img-share'/></div>
+                <div><img className='img-share' /></div>
                 <p>共享自制</p>
                 <span>节点联盟铸造共享收益的自治组织</span>
               </li>
@@ -309,7 +329,7 @@ class App extends React.Component {
                   }
                 }>
                   <div className='border-btn'>
-                    <span><img  className='img-android'/></span>
+                    <span><img className='img-android' /></span>
                     安卓下载
                   </div>
                 </Link>

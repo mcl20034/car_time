@@ -43,7 +43,8 @@
     "/servlet",
     "/kline",
     "/user",
-    "/register"
+    "/register",
+    "/real"
   ],
   "dependencies": {
     "@babel/runtime": "^7.7.2",

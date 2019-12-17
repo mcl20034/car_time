@@ -42,5 +42,9 @@ export default class CoursesService extends BaseService {
   async register(data, header) {
     return this.getData('register', data, 'get', true, header);
   }
+  async getIndexInfoPrice(data) {
+    return this.getData('getIndexInfoPrice', data, 'get');
+  }
+  
   
 }

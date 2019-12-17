@@ -100,7 +100,7 @@ class Download extends React.Component {
         <div className='main-list'>
           {
             MAIN_LIST.map(data => {
-              return <div className='list'>
+              return <div className='list' key={data.imageUrl}>
                 <div className='icon'><img className={data.imageUrl} /></div>
                 <div className='context'>
                   <p>{data.title}</p>
