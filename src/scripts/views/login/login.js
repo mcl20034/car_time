@@ -79,32 +79,9 @@ class Login extends React.Component {
   }
 
   login = () => {
-    if (!this.username) {
-      Toast.info('请输入用户名', 1200);
-      return
-    }
-    if (!this.userpwd) {
-      Toast.info('请输入密码', 1200);
-      return
-    }
-    if (!this.usercode) {
-      Toast.info('请输入图形验证码', 1200);
-      return
-    }
-    service.login({
-      loginName: this.username,
-      password: md5(this.userpwd),
-      vcode: this.usercode
-    }, { Cookie: this.cookie }).then((res) => {
-      if (res.code == 200) {
-        Toast.info('登录成功', 1200);
-        this.props.history.push('/')
-      } else {
-        Toast.info(res.msg, 1200);
-      }
-    }).catch((err) => {
-      Toast.info('网络错误，请稍后再试', 1200);
-    });
+    localStorage.setItem("isLogin","login");
+    Toast.info('登录成功', 1200);
+    this.props.history.push('/')
   }
 
   render() {
@@ -115,16 +92,14 @@ class Login extends React.Component {
     return (
       <div className='login'>
         <img className='login-img' />
-        <img className='login-logo' />
         <div className='login-child'>
-          <div className='login-child-title'>欢迎登录币U</div>
           <input
             onInput={(e) => {
               this.username = e.target.value
             }}
             style={{ width: '90%' }}
             type='text'
-            placeholder='手机号/邮箱'
+            placeholder='手机号'
             className='login-child-input'
           />
           <input
@@ -136,27 +111,11 @@ class Login extends React.Component {
             type='password'
           />
           <div className='login-child-div'>
-            <input
-              onInput={(e) => {
-                this.usercode = e.target.value
-              }}
-              type='text'
-              placeholder='图形验证码'
-              className='login-child-code'
-            />
-            <img onClick={() => {
-              this.getData('ValidateImageServlet', {}, 'get');
-            }} src={`data:image/png;base64,${img}`}></img>
+
           </div>
           <div onClick={() => { this.login() }} className='login-child-button'>
             <img />
-            <span>立即登录</span>
-          </div>
-          <div className='login-child-row'>
-            {/* <span className='login-child-forgat'>忘记密码?</span> */}
-            <Link to='/register'>
-              <span className='login-child-resig'>注册账号</span>
-            </Link>
+            <span>登录</span>
           </div>
 
         </div>

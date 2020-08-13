@@ -1,17 +1,211 @@
 @import "../../../css/_base.scss";
 body {
-  @include fsp(24);
+  @include fsp(44);
   font-family: PingFang;
 }
+
 li {
   list-style: none;
 }
+.app-top {
+  width: 100%;
+  height: pem(88);
+  background-color: #005bae;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  @include fsp(35);
+  color: white;
+  span {
+    margin-right: pem(25);
+  }
+}
+.app-div {
+  width: 96%;
+  margin-top: pem(30);
+  background-color: white;
+  margin-left: 2%;
+  margin-right: 2%;
+}
+.app-shoucang {
+  width: 96%;
+  margin-top: pem(20);
+  background-color: white;
+  margin-left: 2%;
+  margin-right: 2%;
+  height: pem(100);
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+.app-fuwu {
+  width: 96%;
+  background-color: white;
+  margin-left: 2%;
+  margin-right: 2%;
+  display: flex;
+  flex-wrap: wrap;
+}
+.app-fuwu-title {
+  width: 96%;
+  margin-top: pem(20);
+  background-color: white;
+  margin-left: 2%;
+  margin-right: 2%;
+  border-bottom-style: solid;
+  border-bottom-width: 1px;
+  border-bottom-color: #dcdbdb;
+  height: pem(60);
+  span {
+    line-height: pem(60);
+    margin-left: pem(30);
+    @include fsp(30);
+  }
+}
+.app-fuwu-item {
+  display: flex;
+  flex-direction: column;
+  margin-left: pem(40);
+  align-items: center;
+  margin-top: pem(30);
+
+  span {
+    @include fsp(26);
+    margin-top: pem(15);
+    max-width: pem(130);
+    min-width: pem(130);
+    text-align: center;
+  }
+}
+.child-button1 {
+  height: pem(80);
+  content: url("../../images/huangshouhuan.png");
+}
+.child-button2 {
+  height: pem(80);
+  content: url("../../images/dengji.png");
+}
+.child-button3 {
+  height: pem(80);
+  content: url("../../images/zerenshu.png");
+}
+.child-button4 {
+  height: pem(80);
+  content: url("../../images/chuzuwu.png");
+}
+.child-button5 {
+  height: pem(80);
+  content: url("../../images/zuke.png");
+}
+.app-left-button {
+  width: pem(240);
+  height: pem(60);
+  background-color: #fff3f1;
+  text-align: center;
+  line-height: pem(60);
+  border-radius: pem(100);
+  @include fsp(30);
+  color: red;
+}
+.app-right-button {
+  width: pem(240);
+  height: pem(60);
+  background-color: #80cbff;
+  text-align: center;
+  line-height: pem(60);
+  border-radius: pem(100);
+  @include fsp(30);
+  color: white;
+}
+.app-title {
+  width: 100%;
+  margin-left: pem(20);
+  margin-right: pem(20);
+  display: flex;
+  align-items: center;
+  margin-top: pem(10);
+  margin-bottom: pem(30);
+  img {
+    height: pem(60);
+    content: url("../../images/dingwei.png");
+  }
+  span {
+    @include fsp(34);
+    margin-left: pem(10);
+  }
+}
+.app-ditu {
+  margin-top: pem(20);
+  width: 100%;
+  content: url("../../images/ditu.png");
+}
+.app-item {
+  width: 90%;
+  margin-left: pem(30);
+  margin-right: pem(20);
+  margin-top: pem(30);
+  display: flex;
+  border-bottom-width: 1px;
+  border-bottom-style: solid;
+  border-bottom-color: #dcdbdb;
+  padding-bottom: pem(30);
+  div {
+    margin-left: pem(15);
+  }
+}
+.item-image-1 {
+  height: pem(40);
+  content: url("../../images/shequ.png");
+}
+.item-image-2 {
+  height: pem(40);
+  content: url("../../images/paichusuo.png");
+}
+.bottom {
+  height: pem(60);
+  width: 100%;
+}
+.item-image-3 {
+  height: pem(40);
+  content: url("../../images/zenrenqu.png");
+}
+.item-image-4 {
+  height: pem(40);
+  content: url("../../images/fangwu.png");
+}
+.app-item1 {
+  @include fsp(30);
+}
+.bottom-button {
+  width: 80%;
+  margin-left: 10%;
+  margin-right: 10%;
+  margin-bottom: pem(50);
+  height: pem(80);
+  border-radius: 100px;
+  background-color: #80cbff;
+  margin-top: pem(50);
+  text-align: center;
+  line-height: pem(80);
+  @include fsp(35);
+  color: white;
+}
+.app-item2 {
+  @include fsp(28);
+  margin-top: pem(10);
+  color: #999999;
+}
+.app-item3 {
+  @include fsp(28);
+  margin-top: pem(10);
+  color: #999999;
+}
 .app {
   display: flex;
-  margin-left: pem(32);
+  // margin-left: pem(32);
   flex-direction: column;
   width: 100%;
-  background: #051232;
+  background-color: #f8f8f8;
   margin: 0;
   height: 100%;
   position: relative;
@@ -113,6 +307,7 @@ li {
     background: linear-gradient(90deg, rgba(46, 63, 115, 1), rgba(75, 98, 164, 1));
   }
 }
+
 .module_main_two {
   display: flex;
   // flex-direction: row;
@@ -127,7 +322,7 @@ li {
     img {
       height: pem(60);
       padding-bottom: pem(25);
-    } 
+    }
     p {
       font-size: pem(24);
       font-weight: 500;

@@ -44,7 +44,8 @@
     "/kline",
     "/user",
     "/register",
-    "/real"
+    "/real",
+    "/v2"
   ],
   "dependencies": {
     "@babel/runtime": "^7.7.2",
@@ -63,7 +64,7 @@
     "classnames": "^2.2.6",
     "clean-webpack-plugin": "0.1.19",
     "css-loader": "2.1.0",
-    "cssnano": "4.1.10",
+    "cssnano": "^4.1.10",
     "echarts": "^4.5.0",
     "echarts-for-react": "^2.0.15-beta.1",
     "ejs-loader": "0.3.1",
@@ -93,6 +94,7 @@
     "pug-plain-loader": "1.0.0",
     "rc-form": "^2.4.11",
     "react": "^16.11.0",
+    "react-amap": "^1.2.8",
     "react-dom": "^16.12.0",
     "react-router": "^5.1.2",
     "react-router-dom": "^5.1.2",

@@ -1,0 +1,201 @@
+@import "../../../css/_base.scss";
+body {
+  @include fsp(24);
+}
+.bg {
+  width: 100%;
+  height: 100vh;
+  background-color: #221f1f;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-image: url("https://cdn.deapsea.cn//car/bg.png");
+}
+
+.company-top {
+  width: 100%;
+  height: pem(88);
+  background-color: #005aae00;
+  display: flex;
+  flex-flow: column;
+  align-items: flex-start;
+  justify-content: center;
+  @include fsp(35);
+  color: white;
+  margin-left: pem(48);
+  margin-top: pem(33);
+  span {
+    font-size: pem(36);
+  }
+
+  img {
+    width: pem(60);
+    height: pem(5);
+    margin-top: pem(15);
+    content: url("https://cdn.deapsea.cn//car/top_bg.png");
+  }
+}
+
+.company-sub-top {
+  width: 100%;
+  background-color: #005aae00;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  @include fsp(35);
+  color: rgb(10, 10, 10);
+  margin-left: pem(33);
+  margin-top: pem(12);
+  div {
+    display: flex;
+    align-items: center;
+  }
+  .selected {
+    padding-left: pem(24);
+    padding-right: pem(24);
+    text-align: center;
+    line-height: pem(30);
+    font-size: pem(20);
+    border-radius: pem(100);
+    background-color: white;
+  }
+  .unselected {
+    padding-left: pem(24);
+    padding-right: pem(24);
+    text-align: center;
+    line-height: pem(30);
+    font-size: pem(20);
+    border-radius: pem(100);
+    background-color: rgb(0, 0, 0);
+    color: white;
+  }
+  img {
+    margin-left: pem(10);
+    margin-right: pem(10);
+    width: pem(10);
+    height: pem(12);
+    content: url("https://cdn.deapsea.cn//car/sub_next.png");
+  }
+}
+
+.company-form1 {
+  width: 100%;
+  height: pem(707);
+  border-radius: pem(10);
+  background-color: rgb(255, 255, 255);
+  margin-top: pem(55);
+  position: relative;
+  .company-form1-content {
+    margin: pem(33);
+    display: flex;
+    flex-flow: column;
+    span {
+      font-size: pem(26);
+      font-weight: bold;
+    }
+    .form1-item-line {
+      margin-top: pem(8);
+      width: 100%;
+      height: pem(10);
+      content: url("https://cdn.deapsea.cn//car/title1_bg.png");
+    }
+    .form1-item {
+      width: 100%;
+      margin-top: pem(35);
+      display: flex;
+      justify-items: stretch;
+      .form1-input {
+        width: 60%;
+        border-bottom: rgba(225, 226, 230, 1) solid 1px;
+        color: rgba(4, 16, 49, 1);
+        @include fsp(30);
+      }
+      span {
+        width: 40%;
+        font-size: pem(28);
+        font-weight: normal;
+      }
+    }
+    .form1-item-line1 {
+      margin-top: pem(20);
+      width: 100%;
+      height: pem(2);
+      content: url("https://cdn.deapsea.cn//car/title1_bg.png");
+    }
+    .form1-item-bottom {
+      width: pem(196);
+      height: pem(241);
+      position: fixed;
+      top: pem(770);
+      left: pem(498);
+      content: url("https://cdn.deapsea.cn//car/form1_bottom.png");
+    }
+  }
+}
+
+.company-form2 {
+  width: 100%;
+  height: pem(500);
+  border-radius: pem(10);
+  background-color: rgb(255, 255, 255);
+  margin-top: pem(55);
+  position: relative;
+  .company-form2-content {
+    margin: pem(33);
+    display: flex;
+    flex-flow: column;
+    span {
+      font-size: pem(26);
+      font-weight: bold;
+    }
+    .form2-item-line {
+      margin-top: pem(8);
+      width: 100%;
+      height: pem(10);
+      content: url("https://cdn.deapsea.cn//car/title1_bg.png");
+    }
+    .form2-item {
+      width: 100%;
+      margin-top: pem(35);
+      display: flex;
+      justify-items: stretch;
+      .form2-input {
+        width: 60%;
+        border-bottom: rgba(225, 226, 230, 1) solid 1px;
+        color: rgba(4, 16, 49, 1);
+        @include fsp(30);
+      }
+      span {
+        width: 40%;
+        font-size: pem(28);
+        font-weight: normal;
+      }
+      .horizontal {
+        width: 60%;
+        display: flex;
+        justify-content: space-around;
+      }
+    }
+    .form2-item-bottom {
+      width: pem(196);
+      height: pem(241);
+      position: fixed;
+      top: pem(598);
+      left: pem(498);
+      content: url("https://cdn.deapsea.cn//car/form1_bottom.png");
+    }
+  }
+}
+
+.company-next-button {
+  width: pem(326);
+  height: pem(101);
+  line-height: pem(101);
+  background-image: url("https://cdn.deapsea.cn//car/next_bg.png");
+  background-size: pem(326) pem(101);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: pem(100);
+}

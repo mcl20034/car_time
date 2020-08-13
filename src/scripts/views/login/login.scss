@@ -28,7 +28,7 @@ body {
   border-radius: pem(20);
   background-color: white;
   position: absolute;
-  margin-top: pem(218);
+  margin-top: pem(150);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -44,7 +44,7 @@ body {
   width: pem(630);
   border-bottom: rgba(225, 226, 230, 1) solid 1px;
   color: rgba(4, 16, 49, 1);
-  @include fsp(26);
+  @include fsp(30);
   padding-left: pem(9);
   line-height: pem(48);
   margin-top: pem(80);
@@ -60,9 +60,9 @@ body {
 }
 .login-child-div {
   width: pem(630);
-  margin-top: pem(80);
+  margin-top: pem(20);
   position: relative;
-  height: pem(70);
+  height: pem(10);
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
@@ -77,7 +77,7 @@ body {
   width: pem(630);
   border-bottom: rgba(225, 226, 230, 1) solid 1px;
   color: rgba(4, 16, 49, 1);
-  @include fsp(26);
+  @include fsp(30);
   padding-left: pem(9);
   line-height: pem(48);
   margin-top: pem(91);

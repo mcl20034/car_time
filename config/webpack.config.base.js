@@ -1,62 +1,68 @@
-const path = require('path');
-const fs = require('fs');
-const fsExtra = require('fs-extra');
+const path = require("path");
+const fs = require("fs");
+const fsExtra = require("fs-extra");
 const webpack = require("webpack");
-const webpackMerge = require('webpack-merge');
-const HtmlWebpackPlugin = require('html-webpack-plugin'); //打包时候连同html一起打包
+const webpackMerge = require("webpack-merge");
+const HtmlWebpackPlugin = require("html-webpack-plugin"); //打包时候连同html一起打包
 let baseDir = process.cwd(); //当前项目目录
-let srcDir = path.resolve(baseDir, 'src'); //源码目录
-let webpackBuidPath = path.resolve(baseDir, '__build'); //webpack 编译的虚拟目录
-
+let srcDir = path.resolve(baseDir, "src"); //源码目录
+let webpackBuidPath = path.resolve(baseDir, "__build"); //webpack 编译的虚拟目录
 
 //入口文件处理对象
 let entryHandler = {
   entryMap: null,
   entryFiles: {},
   //获取所有编译文件
-  getAllFiles: function (path, isMultiDevice = false) {
+  getAllFiles: function(path, isMultiDevice = false) {
     let _this = this;
     let files = fs.readdirSync(path);
-    files.forEach(function (file) {
-      let stat = fs.statSync(path + '/' + file);
+    files.forEach(function(file) {
+      let stat = fs.statSync(path + "/" + file);
       if (stat.isDirectory()) {
         //如果是文件夹遍历
-        _this.getAllFiles(path + '/' + file);
+        _this.getAllFiles(path + "/" + file);
       } else {
-        _this.entryFiles[path + '/' + file] = file;
+        _this.entryFiles[path + "/" + file] = file;
       }
     });
   },
   //获取所有的入口文件map
-  genEntries: function (srcDir, entryDir, isMultiDevice = false) {
+  genEntries: function(srcDir, entryDir, isMultiDevice = false) {
     let _this = this;
     let map = {};
     if (isMultiDevice) {
       //适配多端，强制规定只能带有h5跟pc目录
       map = {
-        "h5": {},
-        "pc": {}
+        h5: {},
+        pc: {},
       };
     }
-    let jsDir = path.resolve(srcDir, 'scripts');
+    let jsDir = path.resolve(srcDir, "scripts");
     entryDir = path.resolve(jsDir, entryDir);
     this.getAllFiles(entryDir, isMultiDevice);
     for (let dir in _this.entryFiles) {
       let name = _this.entryFiles[dir];
       let m = name.match(/(.+)\.js$/);
-      let entry = m ? m[1] : '';
+      let entry = m ? m[1] : "";
       let entryPath = dir;
       let paths = [];
       paths.push(entryPath);
       if (entry) {
-        if (!isMultiDevice) //不适配pc跟h5
+        if (!isMultiDevice)
+          //不适配pc跟h5
           map[entry] = paths;
         else {
           if (dir.indexOf("h5/") > -1) {
-            let entryKey = dir.substring(dir.indexOf("h5/"), dir.indexOf(".js"))
+            let entryKey = dir.substring(
+              dir.indexOf("h5/"),
+              dir.indexOf(".js")
+            );
             map["h5"][entryKey] = paths;
           } else if (dir.indexOf("pc/") > -1) {
-            let entryKey = dir.substring(dir.indexOf("pc/"), dir.indexOf(".js"))
+            let entryKey = dir.substring(
+              dir.indexOf("pc/"),
+              dir.indexOf(".js")
+            );
             map["pc"][entryKey] = paths;
           }
         }
@@ -64,7 +70,7 @@ let entryHandler = {
     }
     _this.entryMap = map;
     return map;
-  }
+  },
 };
 
 /**
@@ -78,24 +84,39 @@ let entryHandler = {
  *  entryDir:"",//查找的编译入口文件目录，项目目录规范为:/root/src/scripts/，比如:编译入口为：/root/src/scripts/entry
  * }
  */
-module.exports = async function (params) {
+module.exports = async function(params) {
   baseDir = params.root || baseDir;
   //复制相关配置到项目根目录
   if (!fs.existsSync(`${baseDir}/.babelrc`)) {
-    fsExtra.copySync(path.join(__dirname, `../.babelrc`), `${baseDir}/.babelrc`);
+    fsExtra.copySync(
+      path.join(__dirname, `../.babelrc`),
+      `${baseDir}/.babelrc`
+    );
   }
   if (!fs.existsSync(`${baseDir}/tsconfig.json`)) {
-    fsExtra.copySync(path.join(__dirname, `../tsconfig.json`), `${baseDir}/tsconfig.json`);
+    fsExtra.copySync(
+      path.join(__dirname, `../tsconfig.json`),
+      `${baseDir}/tsconfig.json`
+    );
   }
   if (!fs.existsSync(`${baseDir}/postcss.config.js`)) {
-    fsExtra.copySync(path.join(__dirname, `../postcss.config.js`), `${baseDir}/postcss.config.js`);
+    fsExtra.copySync(
+      path.join(__dirname, `../postcss.config.js`),
+      `${baseDir}/postcss.config.js`
+    );
   }
   if (!fs.existsSync(`${baseDir}/webpack.config.js`)) {
-    fsExtra.copySync(path.join(__dirname, `../webpack.config.js`), `${baseDir}/webpack.config.js`);
+    fsExtra.copySync(
+      path.join(__dirname, `../webpack.config.js`),
+      `${baseDir}/webpack.config.js`
+    );
   }
   // 是否打包分析报告
-  let bundleAnalyzerReport = typeof(params.bundleAnalyzerReport)==='undefined'?false:params.bundleAnalyzerReport; //是否开启bundleAnalyzerReport，默认为false
-  let bundleAnalyzerReportPort = params.bundleAnalyzerReportPort;// bundleAnalyzerReport端口，默认为8787，仅在bundleAnalyzerReport为true时生效。
+  let bundleAnalyzerReport =
+    typeof params.bundleAnalyzerReport === "undefined"
+      ? false
+      : params.bundleAnalyzerReport; //是否开启bundleAnalyzerReport，默认为false
+  let bundleAnalyzerReportPort = params.bundleAnalyzerReportPort; // bundleAnalyzerReport端口，默认为8787，仅在bundleAnalyzerReport为true时生效。
 
   //设置环境变量
   let env = params.env || (process.env.NODE_ENV || "prod");
@@ -103,8 +124,8 @@ module.exports = async function (params) {
   //项目编译后的保存目录
   // let buidDir = params.build //path.normalize(path.resolve(baseDir, `${params.build}/`));
   let buidDir = path.normalize(path.resolve(baseDir, `${params.build}/`));
-  let srcDir = path.resolve(baseDir, 'src'); //源码目录
-  let webpackBuidPath = path.resolve(baseDir, '__build'); //webpack 编译的虚拟目录
+  let srcDir = path.resolve(baseDir, "src"); //源码目录
+  let webpackBuidPath = path.resolve(baseDir, "__build"); //webpack 编译的虚拟目录
   //项目编译入口目录
   let entryDir = params.entryDir || "entry";
   let entries = null;
@@ -131,10 +152,10 @@ module.exports = async function (params) {
     entry: entries,
     output: {
       path: env == "dev" ? webpackBuidPath : buidDir, //必须是绝对路径
-      devtoolModuleFilenameTemplate: '[resource-path]',
+      devtoolModuleFilenameTemplate: "[resource-path]",
       sourceMapFilename: "[file].map",
-      filename: env == "dev" ? '[name].js' : 'scripts/[name].js',
-      /** 
+      filename: env == "dev" ? "[name].js" : "scripts/[name].js",
+      /**
        * chunkFilename用来打包require.ensure方法中引入的模块,如果该方法中没有引入任何模块则不会生成任何chunk块文件
        * 比如在main.js文件中,require.ensure([],function(require){alert(11);}),这样不会打包块文件
        * 只有这样才会打包生成块文件require.ensure([],function(require){alert(11);require('./greeter')})
@@ -143,7 +164,7 @@ module.exports = async function (params) {
        * 注意:对于不是在ensure方法中引入的模块,此属性不会生效,只能用CommonsChunkPlugin插件来提取
        **/
       // chunkFilename: env == "dev" ? '[id].common.js' : 'scripts/[id].common.min.js',
-      publicPath: params.publicPath ? `${params.publicPath}/` : "" //页面中引入的url路径前缀（css，js） 相对路径 ，如果是绝对路径可以替换成cdn 路径
+      publicPath: env == "dev" ? "" : ".", //页面中引入的url路径前缀（css，js） 相对路径 ，如果是绝对路径可以替换成cdn 路径
     },
     plugins: [
       //new webpack.optimize.ModuleConcatenationPlugin(),
@@ -151,106 +172,117 @@ module.exports = async function (params) {
       //new webpack.optimize.OccurrenceOrderPlugin(),
       //new webpack.NoEmitOnErrorsPlugin(),
       new webpack.DefinePlugin({
-        'process.env.NODE_ENV': JSON.stringify(env)
+        "process.env.NODE_ENV": JSON.stringify(env),
       }),
     ],
     module: {
-      rules: [{
+      rules: [
+        {
           test: /\.(tpl|ejs)$/,
           exclude: /(node_modules|bower_components)/,
-          use: [{
-            loader: 'ejs-loader'
-          }]
+          use: [
+            {
+              loader: "ejs-loader",
+            },
+          ],
         },
         {
           test: /\.jade$/,
           exclude: /(node_modules|bower_components)/,
-          use: [{
-            loader: 'jade-loader'
-          }]
+          use: [
+            {
+              loader: "jade-loader",
+            },
+          ],
         },
         {
           test: /\.pug$/,
-          loader: 'pug-plain-loader'
+          loader: "pug-plain-loader",
         },
         {
           test: /\.styl$/,
-          use: [
-            'style-loader',
-            'css-loader',
-            'stylus-loader'
-          ]
+          use: ["style-loader", "css-loader", "stylus-loader"],
         },
         {
           test: /(\.ts|\.tsx)$/,
           exclude: /(node_modules|bower_components)/,
-          use: [{
-            loader: 'ts-loader'
-          }]
+          use: [
+            {
+              loader: "ts-loader",
+            },
+          ],
         },
         {
           test: /\.js/,
           exclude: /(node_modules|bower_components)/,
-          use: [{
-            loader: 'babel-loader',
-            options: {
-              //忽略哪些腳本是不进行编译打包的
-              ignore: [],
-              //缓存设置
-              cacheDirectory: true
-            }
-          }]
+          use: [
+            {
+              loader: "babel-loader",
+              options: {
+                //忽略哪些腳本是不进行编译打包的
+                ignore: [],
+                //缓存设置
+                cacheDirectory: true,
+              },
+            },
+          ],
         },
         {
           test: /\.(jpe?g|png|gif|svg)$/i,
-          use: [{
-            loader: 'url-loader',
-            options: {
-              limit: 2,
-              mimetype: "images/jpg",
-              name: `images/[name]_[hash].[ext]`
-            }
-          }]
+          use: [
+            {
+              loader: "url-loader",
+              options: {
+                limit: 2,
+                mimetype: "images/jpg",
+                name: `images/[name]_[hash].[ext]`,
+              },
+            },
+          ],
         },
         {
           test: /\.(ttf|eot|svg|woff(2)?)(\?[a-z0-9=&.]+)?/i,
-          use: [{
-            loader: 'url-loader',
-            options: {
-              limit: 8124,
-              name: "fonts/[name].[ext]"
-            }
-          }]
-        }
-      ]
+          use: [
+            {
+              loader: "url-loader",
+              options: {
+                limit: 8124,
+                name: "fonts/[name].[ext]",
+              },
+            },
+          ],
+        },
+      ],
     },
     resolve: {
-      alias: { //需要设置哪些库的别名
-
+      alias: {
+        //需要设置哪些库的别名
       },
       modules: [
         process.cwd() + "/node_modules",
         baseDir + "/node_modules",
-        srcDir
+        srcDir,
       ],
-      extensions: [ //开启后缀名的自动补全
-        '.tsx',
-        '.ts',
-        '.js',
-        '.jsx',
-        '.vue',
-        '.gif',
-        '.css',
-        '.scss',
-        '.png',
-        '.jpg',
-        '.less',
-        '.sass'
-      ]
+      extensions: [
+        //开启后缀名的自动补全
+        ".tsx",
+        ".ts",
+        ".js",
+        ".jsx",
+        ".vue",
+        ".gif",
+        ".css",
+        ".scss",
+        ".png",
+        ".jpg",
+        ".less",
+        ".sass",
+      ],
     },
-    externals: { //指定不需要编译的外部依赖
+    externals: {
+      //指定不需要编译的外部依赖
       //"react": 'React',
-    }
+    },
   };
 
   //根据环境变量，进行配置文件的merge,同时合并外部的webpack.config.js文件
@@ -271,7 +303,7 @@ module.exports = async function (params) {
   let pages = [];
   if (!params.isMultiDevice) {
     pages = fs.readdirSync(srcDir);
-    pages.forEach(function (filename) {
+    pages.forEach(function(filename) {
       let m = filename.match(/(.+)\.html$/);
       if (m) {
         // @see https://github.com/kangax/html-minifier
@@ -296,34 +328,35 @@ module.exports = async function (params) {
             chunksSortMode: 允许控制块在添加到页面之前的排序方式，支持的值：'none' | 'default' | {function}-default:'auto'
             excludeChunks: 允许跳过某些块，(比如，跳过单元测试的块)
             */
-          filename: filename
+          filename: filename,
         };
         if (m[1] in compiledConf.entry) {
-          conf.inject = 'body';
-          conf.chunks = ['manifest','common', m[1]];
+          conf.inject = "body";
+          conf.chunks = ["manifest", "common", m[1]];
         }
         compiledConf.plugins.push(new HtmlWebpackPlugin(conf)); //打包时候连同html一起打包
       }
     });
-  } else { //一个项目配置pc、h5的话，src下必须存放html目录
+  } else {
+    //一个项目配置pc、h5的话，src下必须存放html目录
     //把所有的html目录的html文件读取出来
     getAllPages(`${srcDir}/html`);
-    pages.forEach(function (filename) {
+    pages.forEach(function(filename) {
       let htmlFile = filename.match(/src\/html\/(.+)\.html$/);
       let conf = {
         template: filename,
-        filename: `${htmlFile[1]}.html`
+        filename: `${htmlFile[1]}.html`,
       };
       let keys = Object.keys(compiledConf.entry);
       for (let key of keys) {
-        if (key.indexOf("h5") > -1 && htmlFile[1] === key ) {
-          conf.inject = 'body';
-          conf.chunks = ['manifest','h5/common-h5', key];
+        if (key.indexOf("h5") > -1 && htmlFile[1] === key) {
+          conf.inject = "body";
+          conf.chunks = ["manifest", "h5/common-h5", key];
           break;
         }
         if (key.indexOf("pc") > -1 && htmlFile[1] === key) {
-          conf.inject = 'body';
-          conf.chunks = ['manifest','pc/common-pc', key];
+          conf.inject = "body";
+          conf.chunks = ["manifest", "pc/common-pc", key];
           break;
         }
       }
@@ -334,16 +367,16 @@ module.exports = async function (params) {
 
   function getAllPages(path) {
     let files = fs.readdirSync(path);
-    files.forEach(function (file) {
-      let stat = fs.statSync(path + '/' + file);
+    files.forEach(function(file) {
+      let stat = fs.statSync(path + "/" + file);
       if (stat.isDirectory()) {
         //如果是文件夹遍历
-        getAllPages(path + '/' + file);
+        getAllPages(path + "/" + file);
       } else {
-        pages.push(path + '/' + file);
+        pages.push(path + "/" + file);
       }
     });
   }
 
   return compiledConf;
-}
+};
