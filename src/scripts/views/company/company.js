@@ -101,6 +101,9 @@ class Company extends React.Component {
       subDatas: subDatas,
     });
     localStorage.setItem("current_index", c_index);
+    if (c_index == 3) {
+      this.props.history.push("/companySuccess");
+    }
   };
 
   onnext = () => {
@@ -137,6 +140,16 @@ class Company extends React.Component {
         "union_d64bdb0890b43cb92a9bbf8d5e0b22a3"
       );
     }
+
+    let lat = localStorage.getItem("lat");
+    let lng = localStorage.getItem("lng");
+    let address = localStorage.getItem("address");
+
+    this.setState({
+      lat: lat,
+      lng: lng,
+      address: address,
+    });
 
     let current_index = localStorage.getItem("current_index");
     if (current_index) {
@@ -175,13 +188,6 @@ class Company extends React.Component {
     if (mobile) {
       this.setState({
         mobile: mobile,
-      });
-    }
-
-    let address = localStorage.getItem("address");
-    if (address) {
-      this.setState({
-        address: address,
       });
     }
   }
@@ -378,12 +384,6 @@ class Company extends React.Component {
                 placeholder="请选择地址"
                 className="form1-input"
                 defaultValue={this.state.address}
-                onInput={(e) => {
-                  this.setState({
-                    address: e.target.value,
-                  });
-                  localStorage.setItem("address", e.target.value);
-                }}
                 onClick={() => {
                   this.props.history.push("/gdmap");
                 }}

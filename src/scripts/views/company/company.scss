@@ -189,6 +189,8 @@ body {
 }
 
 .company-next-button {
+  position: fixed;
+  bottom: 0px;
   width: pem(326);
   height: pem(101);
   line-height: pem(101);
@@ -197,5 +199,5 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-top: pem(100);
+  margin-bottom: pem(100);
 }

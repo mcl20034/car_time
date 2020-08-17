@@ -1,0 +1,66 @@
+@import "../../../css/_base.scss";
+body {
+  @include fsp(24);
+}
+.last_bg {
+  width: 100%;
+  height: 100vh;
+  background-color: #221f1f;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-image: url("https://cdn.deapsea.cn//car/last_bg.png");
+  background-size: cover;
+}
+
+.light {
+  width: 100%;
+  height: pem(295);
+  margin-top: pem(112);
+  content: url("https://cdn.deapsea.cn//car/last_light.png");
+}
+
+.text {
+  width: pem(662);
+  height: pem(154);
+  margin-top: pem(150);
+  content: url("https://cdn.deapsea.cn//car/last_text.png");
+}
+
+.qr_content {
+  width: pem(172);
+  height: pem(180);
+  margin-top: pem(44);
+  background-image: url("https://cdn.deapsea.cn//car/last_qrcode_bg.png");
+  background-size: cover;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.qr_code {
+  width: pem(123);
+  height: pem(123);
+  margin-bottom: pem(20);
+  content: url("https://cdn.deapsea.cn//car/car_qrcode.jpeg");
+}
+
+.last-button {
+  position: fixed;
+  bottom: 0px;
+  width: pem(326);
+  height: pem(101);
+  line-height: pem(101);
+  background-image: url("https://cdn.deapsea.cn//car/last_btn.png");
+  background-size: pem(326) pem(101);
+  display: flex;
+  justify-self: flex-end;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: pem(100);
+  font-size: pem(24);
+  font-family: Microsoft YaHei;
+  font-weight: bold;
+  color: rgba(255, 255, 255, 1);
+}

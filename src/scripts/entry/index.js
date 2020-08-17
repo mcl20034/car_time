@@ -11,6 +11,7 @@ import Download from "../views/download/download";
 import Company from "../views/company/company";
 import Brand from "../views/brand/brand";
 import Gdmap from "../views/gdmap/gdmap";
+import CompanySuccess from "../views/companySuccess/companySuccess";
 
 import { Provider } from "mobx-react";
 import store from "../mobx";
@@ -27,6 +28,7 @@ ReactDOM.render(
     <HashRouter history={hashHistory}>
       <Switch>
         <Route exact path="/" component={Empty} />
+        <Route exact path="/companySuccess" component={CompanySuccess} />
         <Route exact path="/company" component={Company} />
         <Route exact path="/brand" component={Brand} />
         <Route exact path="/gdmap" component={Gdmap} />

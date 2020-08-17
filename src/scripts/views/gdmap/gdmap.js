@@ -29,10 +29,6 @@ class Gdmap extends React.Component {
 
     this.amapEvents = {
       created: (mapInstance) => {
-        console.log(
-          "高德地图 Map 实例创建成功；如果你要亲自对实例进行操作，可以从这里开始。比如："
-        );
-        console.log("缩放级别：", mapInstance.getZoom());
         this.mapInstance = mapInstance;
 
         AMap.plugin(
@@ -58,17 +54,20 @@ class Gdmap extends React.Component {
               // TODO 针对选中的poi实现自己的功能
               placeSearch.setCity(e.poi.adcode);
               placeSearch.search(e.poi.name);
-              console.log(e.poi.location.lat, e.poi.location.lng);
+              let address =
+                e.poi.district + "," + e.poi.address + "," + e.poi.name;
               this.setState({
                 lnglat: e.poi.location.lat + "," + e.poi.location.lng,
               });
+              localStorage.setItem("lat", e.poi.location.lat);
+              localStorage.setItem("lng", e.poi.location.lng);
+              localStorage.setItem("address", address);
             });
 
             const citySearch = new AMap.CitySearch();
             citySearch.getLocalCity((status, result) => {
               if (status === "complete" && result.info === "OK") {
                 // 查询成功，result即为当前所在城市信息
-                console.log("当前所在城市：", result);
                 if (result && result.city && result.bounds) {
                   // 当前城市名称
                   // const cityinfo = result.city;
@@ -96,16 +95,14 @@ class Gdmap extends React.Component {
     };
     this.markerEvents = {
       created: (markerInstance) => {
-        console.log(
-          "高德地图 Marker 实例创建成功；如果你要亲自对实例进行操作，可以从这里开始。比如："
-        );
-        console.log(markerInstance.getPosition());
-
         this.markerInstance = markerInstance;
       },
     };
     // this.markerPosition = { longitude: 120, latitude: 30 };
   }
+  onSubmit = () => {
+    this.props.history.push("/company");
+  };
 
   componentDidUpdate(prevProps) {
     const { value } = this.props;
@@ -173,7 +170,8 @@ class Gdmap extends React.Component {
               id="geo"
               type="button"
               className="btn"
-              defaultValue="地址 -> 经纬度"
+              defaultValue="确定"
+              onClick={this.onSubmit}
             />
           </div>
           // <div className={styles.infoBox}>
