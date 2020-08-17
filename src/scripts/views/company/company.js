@@ -134,11 +134,11 @@ class Company extends React.Component {
     if (code) {
       this.getUser(code);
     } else {
-      // this.getSign();
-      localStorage.setItem(
-        "token-key",
-        "union_7c936c30ca75afd509f457f31fb59f19"
-      );
+      this.getSign();
+      // localStorage.setItem(
+      //   "token-key",
+      //   "union_7c936c30ca75afd509f457f31fb59f19"
+      // );
     }
 
     let lat = localStorage.getItem("lat");
@@ -152,9 +152,9 @@ class Company extends React.Component {
     });
 
     let current_index = localStorage.getItem("current_index");
-    // if (current_index) {
-    //   this.renderNext(current_index);
-    // }
+    if (current_index) {
+      this.renderNext(current_index);
+    }
 
     let brandChannel = localStorage.getItem("brandChannel");
     if (brandChannel) {
