@@ -137,7 +137,7 @@ class Company extends React.Component {
       // this.getSign();
       localStorage.setItem(
         "token-key",
-        "union_d64bdb0890b43cb92a9bbf8d5e0b22a3"
+        "union_7c936c30ca75afd509f457f31fb59f19"
       );
     }
 
