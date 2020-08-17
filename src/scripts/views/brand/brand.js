@@ -82,9 +82,9 @@ class Brand extends React.Component {
   };
 
   renderCities = () => {
-    const { brandList } = this.state;
-    return Object.keys(brandList).map((letter) => {
-      const cList = brandList[letter];
+    const { brandList,city } = this.state;
+    return Object.keys(city).map((letter) => {
+      const cList = city[letter];
       return (
         <div
           key={letter}
@@ -101,7 +101,7 @@ class Brand extends React.Component {
                     onClick={() => this.onSelectCity(c)}
                   >
                     <img src={c.logo} />
-                    {c.brandName}
+                    {c.city}
                   </Item>
                 );
               })}
@@ -109,6 +109,32 @@ class Brand extends React.Component {
         </div>
       );
     });
+    // return Object.keys(brandList).map((letter) => {
+    //   const cList = brandList[letter];
+    //   return (
+    //     <div
+    //       key={letter}
+    //       ref={(element) => (this[`section${letter}`] = element)}
+    //     >
+    //       <List renderHeader={() => letter}>
+    //         {cList.length > 0 &&
+    //           cList.map((c) => {
+    //             return (
+    //               <Item
+    //                 arrow="horizontal"
+    //                 className="city-list-item"
+    //                 key={c.id}
+    //                 onClick={() => this.onSelectCity(c)}
+    //               >
+    //                 <img src={c.logo} />
+    //                 {c.brandName}
+    //               </Item>
+    //             );
+    //           })}
+    //       </List>
+    //     </div>
+    //   );
+    // });
   };
 
   onSelectCity = (brand) => {

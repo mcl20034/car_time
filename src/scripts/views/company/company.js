@@ -152,9 +152,9 @@ class Company extends React.Component {
     });
 
     let current_index = localStorage.getItem("current_index");
-    if (current_index) {
-      this.renderNext(current_index);
-    }
+    // if (current_index) {
+    //   this.renderNext(current_index);
+    // }
 
     let brandChannel = localStorage.getItem("brandChannel");
     if (brandChannel) {
