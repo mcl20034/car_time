@@ -53,7 +53,7 @@ class Company extends React.Component {
           text: "未开通",
         },
       ],
-      opened: 1,
+      opened: 0,
       joined_radioOptions: [
         {
           id: "id-has-joined",
@@ -66,7 +66,7 @@ class Company extends React.Component {
           text: "未加入",
         },
       ],
-      joined: 1,
+      joined: 0,
     };
   }
 
@@ -107,7 +107,14 @@ class Company extends React.Component {
   };
 
   onnext = () => {
-    let { current_index } = this.state;
+    let {
+      current_index,
+      brandChannel,
+      name,
+      contacts,
+      mobile,
+      address,
+    } = this.state;
     let next_index = current_index + 1;
     switch (next_index) {
       case 1: {
@@ -115,6 +122,34 @@ class Company extends React.Component {
         break;
       }
       case 2: {
+        if (brandChannel) {
+          Toast.info("请输入品牌厂家", 1200);
+          return;
+        }
+        if (name) {
+          Toast.info("请输入经销商全称", 1200);
+          return;
+        }
+        if (name.length > 5) {
+          Toast.info("请输入正确的经销商全称", 1200);
+          return;
+        }
+        if (contacts) {
+          Toast.info("请输入联系人", 1200);
+          return;
+        }
+        if (mobile) {
+          Toast.info("请输入手机号", 1200);
+          return;
+        }
+        if (mobile.length > 11 || mobile[0] != "1") {
+          Toast.info("请输入正确的手机号", 1200);
+          return;
+        }
+        if (address) {
+          Toast.info("请输入地址", 1200);
+          return;
+        }
         this.companyRegister(next_index);
         break;
       }
@@ -130,15 +165,14 @@ class Company extends React.Component {
 
   componentDidMount() {
     let code = this.getQueryVariable("code");
-    console.log("code: ", code);
     if (code) {
       this.getUser(code);
     } else {
-      this.getSign();
-      // localStorage.setItem(
-      //   "token-key",
-      //   "union_7c936c30ca75afd509f457f31fb59f19"
-      // );
+      // this.getSign();
+      localStorage.setItem(
+        "token-key",
+        "union_7c936c30ca75afd509f457f31fb59f19"
+      );
     }
 
     let lat = localStorage.getItem("lat");
@@ -152,9 +186,9 @@ class Company extends React.Component {
     });
 
     let current_index = localStorage.getItem("current_index");
-    if (current_index) {
-      this.renderNext(current_index);
-    }
+    // if (current_index) {
+    //   this.renderNext(current_index);
+    // }
 
     let brandChannel = localStorage.getItem("brandChannel");
     if (brandChannel) {
