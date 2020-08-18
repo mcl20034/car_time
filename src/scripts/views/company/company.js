@@ -107,6 +107,8 @@ class Company extends React.Component {
   };
 
   onnext = () => {
+    Toast.info("请输入品牌厂家", 1200);
+    return
     let {
       current_index,
       brandChannel,
