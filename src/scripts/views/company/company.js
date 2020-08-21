@@ -9,6 +9,7 @@ import apiConf from "../../config/api";
 import { Toast } from "../../components";
 import { forEach, get } from "lodash";
 import RadioGroup from "../appointCourses/components/radioGroup.js";
+import wx from "weixin-js-sdk";
 
 import md5 from "md5";
 @inject("rootStore")
@@ -67,6 +68,7 @@ class Company extends React.Component {
         },
       ],
       joined: 0,
+      appId: "",
     };
   }
 
@@ -107,8 +109,6 @@ class Company extends React.Component {
   };
 
   onnext = () => {
-    Toast.info("请输入品牌厂家", 1200);
-    return
     let {
       current_index,
       brandChannel,
@@ -116,6 +116,7 @@ class Company extends React.Component {
       contacts,
       mobile,
       address,
+      ksNo,
     } = this.state;
     let next_index = current_index + 1;
     switch (next_index) {
@@ -124,23 +125,24 @@ class Company extends React.Component {
         break;
       }
       case 2: {
-        if (brandChannel) {
+        console.log(brandChannel);
+        if (!brandChannel) {
           Toast.info("请输入品牌厂家", 1200);
           return;
         }
-        if (name) {
+        if (!name) {
           Toast.info("请输入经销商全称", 1200);
           return;
         }
-        if (name.length > 5) {
-          Toast.info("请输入正确的经销商全称", 1200);
-          return;
-        }
-        if (contacts) {
+        if (!contacts) {
           Toast.info("请输入联系人", 1200);
           return;
         }
-        if (mobile) {
+        if (contacts.length > 5) {
+          Toast.info("请输入正确的联系人姓名", 1200);
+          return;
+        }
+        if (!mobile) {
           Toast.info("请输入手机号", 1200);
           return;
         }
@@ -148,7 +150,7 @@ class Company extends React.Component {
           Toast.info("请输入正确的手机号", 1200);
           return;
         }
-        if (address) {
+        if (!address) {
           Toast.info("请输入地址", 1200);
           return;
         }
@@ -156,6 +158,10 @@ class Company extends React.Component {
         break;
       }
       case 3: {
+        if (!ksNo) {
+          Toast.info("请输入快手账号ID/账号", 1200);
+          return;
+        }
         this.ksRegister(next_index);
         break;
       }
@@ -170,12 +176,34 @@ class Company extends React.Component {
     if (code) {
       this.getUser(code);
     } else {
-      // this.getSign();
-      localStorage.setItem(
-        "token-key",
-        "union_7c936c30ca75afd509f457f31fb59f19"
-      );
+      this.getSign();
+      // localStorage.setItem(
+      //   "token-key",
+      //   "union_7c936c30ca75afd509f457f31fb59f19"
+      // );
     }
+
+    // 初始化微信js-sdk
+    // let appId = localStorage.getItem("wx-appId");
+    // let timestamp = localStorage.getItem("wx-timestamp");
+    // let nonceStr = localStorage.getItem("wx-nonceStr");
+    // let signature = localStorage.getItem("wx-signature");
+    // if (appId) {
+    //   this.setState({
+    //     appId,
+    //   });
+    //   wx.config({
+    //     debug: true,
+    //     appId: appId,
+    //     timestamp: timestamp,
+    //     nonceStr: nonceStr,
+    //     signature: signature,
+    //     jsApiList: [
+    //       "", // 判断当前客户端版本是否支持指定JS接口
+    //     ],
+    //     openTagList: ["wx-open-launch-weapp"],
+    //   });
+    // }
 
     let lat = localStorage.getItem("lat");
     let lng = localStorage.getItem("lng");
@@ -234,6 +262,10 @@ class Company extends React.Component {
       .then((res) => {
         console.log(res);
         if (res.code == 0) {
+          localStorage.setItem("wx-appId", res.data.wxSign.appId);
+          localStorage.setItem("wx-timestamp", res.data.wxSign.timestamp);
+          localStorage.setItem("wx-nonceStr", res.data.wxSign.nonceStr);
+          localStorage.setItem("wx-signature", res.data.wxSign.signature);
           this.getAuthUrl();
         } else {
           Toast.info(res.msg, 1200);
@@ -251,7 +283,6 @@ class Company extends React.Component {
         page: "https://test.taoxiangche.com/wxAuth/index.html#/company",
       })
       .then((res) => {
-        console.log(res.data.authUrl);
         window.location.href = res.data.authUrl;
       })
       .catch((err) => {
@@ -266,7 +297,6 @@ class Company extends React.Component {
         code: code,
       })
       .then((res) => {
-        console.log(res.data.token.union_token);
         localStorage.setItem("token-key", res.data.token.union_token);
       })
       .catch((err) => {
@@ -276,7 +306,15 @@ class Company extends React.Component {
 
   companyRegister = (current_index) => {
     this.renderNext(current_index);
-    let { brandChannel, name, contacts, mobile, address } = this.state;
+    let {
+      brandChannel,
+      name,
+      contacts,
+      mobile,
+      address,
+      lat,
+      lng,
+    } = this.state;
     service
       .companyRegister({
         brandChannel: brandChannel,
@@ -284,9 +322,15 @@ class Company extends React.Component {
         contacts: contacts,
         mobile: mobile,
         address: address,
+        latitude: lat,
+        longitude: lng,
       })
       .then((res) => {
-        this.renderNext(current_index);
+        if (res.code == 0) {
+          this.renderNext(current_index);
+        } else {
+          Toast.info(res.msg, 1200);
+        }
       })
       .catch((err) => {
         Toast.info("网络错误，请稍后再试", 1200);
@@ -303,7 +347,11 @@ class Company extends React.Component {
         joined: joined,
       })
       .then((res) => {
-        this.renderNext(current_index);
+        if (res.code == 0) {
+          this.renderNext(current_index);
+        } else {
+          Toast.info(res.msg, 1200);
+        }
       })
       .catch((err) => {
         Toast.info("网络错误，请稍后再试", 1200);

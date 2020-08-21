@@ -115,6 +115,7 @@
     "webpack-bundle-analyzer": "3.0.4",
     "webpack-dev-middleware": "3.6.0",
     "webpack-hot-middleware": "^2.24.3",
-    "webpack-merge": "4.2.1"
+    "webpack-merge": "4.2.1",
+    "weixin-js-sdk": "^1.6.0"
   }
 }

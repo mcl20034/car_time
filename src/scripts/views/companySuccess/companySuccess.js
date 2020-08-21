@@ -22,7 +22,9 @@ class CompanySuccess extends React.Component {
     // console.log(`环境是${process.env.NODE_ENV}`);
     this._domain = adaptor[process.env.NODE_ENV];
     this.data = null;
-    this.state = {};
+    this.state = {
+      show_qr: "none",
+    };
   }
 
   componentDidMount() {}
@@ -32,11 +34,29 @@ class CompanySuccess extends React.Component {
       <div className="last_bg">
         <img className="light" />
         <img className="text" />
-        <div className="qr_content">
-          <img className="qr_code" />
+        <div className="qr_content" style={{ display: this.state.show_qr }}>
+          <div className="qr_code_bg">
+            <img
+              className="qr_code_close"
+              onClick={() => {
+                this.setState({ show_qr: "none" });
+              }}
+            />
+            <img className="qr_code" />
+          </div>
         </div>
-        <div className="last-button">
-          <span>参加使用培训</span>
+        <div className="bottom">
+          <div className="last-button">
+            <span>参加使用培训</span>
+          </div>
+          <div
+            className="last-button"
+            onClick={() => {
+              this.setState({ show_qr: "flex" });
+            }}
+          >
+            <span>进入小店</span>
+          </div>
         </div>
       </div>
     );

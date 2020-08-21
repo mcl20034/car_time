@@ -10,7 +10,7 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-image: url("https://cdn.deapsea.cn//car/last_bg.png");
+  background-image: url("https://cdn.deapsea.cn//car/last_bg_new.png");
   background-size: cover;
 }
 
@@ -29,36 +29,64 @@ body {
 }
 
 .qr_content {
-  width: pem(172);
-  height: pem(180);
-  margin-top: pem(44);
-  background-image: url("https://cdn.deapsea.cn//car/last_qrcode_bg.png");
-  background-size: cover;
+  position: fixed;
+  width: 100%;
+  height: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
+  background-color: #000000e1;
+  z-index: 999;
+}
+
+.qr_code_bg {
+  width: pem(511);
+  height: pem(511);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-image: url("https://cdn.deapsea.cn//car/qrcode_bg_new.png");
+  background-size: pem(511) pem(511);
+}
+
+.qr_code_close {
+  margin-top: pem(-100);
+  align-self: flex-end;
+  width: pem(50);
+  height: pem(50);
+  content: url("https://cdn.deapsea.cn//car/qrcode_bg_close.png");
 }
 
 .qr_code {
+  margin-top: pem(230);
   width: pem(123);
   height: pem(123);
-  margin-bottom: pem(20);
   content: url("https://cdn.deapsea.cn//car/car_qrcode.jpeg");
+}
+.bottom {
+  position: fixed;
+  bottom: 0px;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-self: flex-end;
+  align-items: center;
+  justify-content: space-around;
+  margin-bottom: pem(100);
+  background-color: rgba(255, 255, 255, 0);
+  border-color: rgba(255, 255, 255, 0);
 }
 
 .last-button {
-  position: fixed;
-  bottom: 0px;
-  width: pem(326);
-  height: pem(101);
+  width: pem(310);
+  height: pem(84);
   line-height: pem(101);
   background-image: url("https://cdn.deapsea.cn//car/last_btn.png");
-  background-size: pem(326) pem(101);
+  background-size: pem(310) pem(84);
   display: flex;
-  justify-self: flex-end;
   align-items: center;
   justify-content: center;
-  margin-bottom: pem(100);
   font-size: pem(24);
   font-family: Microsoft YaHei;
   font-weight: bold;
