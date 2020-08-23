@@ -52,6 +52,7 @@ body {
 
 .qr_code_close {
   margin-top: pem(-100);
+  margin-right: pem(10);
   align-self: flex-end;
   width: pem(50);
   height: pem(50);
@@ -63,6 +64,12 @@ body {
   width: pem(123);
   height: pem(123);
   content: url("https://cdn.deapsea.cn//car/car_qrcode.jpeg");
+  user-select: auto;
+  pointer-events: all;
+  -webkit-touch-callout: auto;
+  -moz-user-select: all;
+  -webkit-user-select: auto;
+  -moz-user-select: all;
 }
 .bottom {
   position: fixed;

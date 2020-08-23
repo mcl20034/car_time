@@ -24,16 +24,38 @@ class CompanySuccess extends React.Component {
     this.data = null;
     this.state = {
       show_qr: "none",
+      my_opacity: 0,
     };
   }
+  timer = null;
+  componentDidMount() {
+    setTimeout(this.iTimer, 0);
+  }
 
-  componentDidMount() {}
+  // 组件清除时清除定时器
+  componentWillUnmount() {
+    clearInterval(this.timer);
+  }
+
+  // 定时器
+  iTimer = () => {
+    this.timer = setInterval(() => {
+      let { my_opacity } = this.state;
+      my_opacity += 0.2;
+      if (my_opacity > 1) {
+        my_opacity = 0;
+      }
+      this.setState({
+        my_opacity: my_opacity,
+      });
+    }, 1000);
+  };
 
   render() {
     return (
       <div className="last_bg">
-        <img className="light" />
-        <img className="text" />
+        <img className="light" style={{ opacity: this.state.my_opacity }} />
+        <img className="text" style={{ opacity: this.state.my_opacity }} />
         <div className="qr_content" style={{ display: this.state.show_qr }}>
           <div className="qr_code_bg">
             <img
@@ -46,7 +68,12 @@ class CompanySuccess extends React.Component {
           </div>
         </div>
         <div className="bottom">
-          <div className="last-button">
+          <div
+            className="last-button"
+            onClick={() => {
+              window.location.href = "https://lp.m.moxueyuan.com";
+            }}
+          >
             <span>参加使用培训</span>
           </div>
           <div

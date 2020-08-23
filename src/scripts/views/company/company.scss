@@ -27,6 +27,9 @@ body {
   margin-top: pem(33);
   span {
     font-size: pem(36);
+    font-family: Microsoft YaHei;
+    font-weight: bold;
+    color: rgba(255, 255, 255, 1);
   }
 
   img {
@@ -52,23 +55,31 @@ body {
     align-items: center;
   }
   .selected {
+    height: pem(58);
     padding-left: pem(24);
     padding-right: pem(24);
     text-align: center;
     line-height: pem(30);
     font-size: pem(20);
+    font-weight: bold;
     border-radius: pem(100);
     background-color: white;
+    display: flex;
+    align-items: center;
   }
   .unselected {
+    height: pem(58);
     padding-left: pem(24);
     padding-right: pem(24);
     text-align: center;
     line-height: pem(30);
     font-size: pem(20);
+    font-weight: bold;
     border-radius: pem(100);
     background-color: rgb(0, 0, 0);
     color: white;
+    display: flex;
+    align-items: center;
   }
   img {
     margin-left: pem(10);
@@ -77,6 +88,19 @@ body {
     height: pem(12);
     content: url("https://cdn.deapsea.cn//car/sub_next.png");
   }
+}
+
+.qr_code {
+  margin-top: pem(60);
+  width: pem(300);
+  height: pem(300);
+  content: url("https://cdn.deapsea.cn//car/car_qrcode.jpeg");
+  user-select: auto;
+  pointer-events: all;
+  -webkit-touch-callout: auto;
+  -moz-user-select: all;
+  -webkit-user-select: auto;
+  -moz-user-select: all;
 }
 
 .company-form1 {
@@ -93,6 +117,8 @@ body {
     span {
       font-size: pem(26);
       font-weight: bold;
+      display: flex;
+      align-items: center;
     }
     .form1-item-line {
       margin-top: pem(8);
@@ -105,16 +131,27 @@ body {
       margin-top: pem(35);
       display: flex;
       justify-items: stretch;
+      align-items: center;
+      border-bottom: rgba(225, 226, 230, 1) solid 1px;
       .form1-input {
-        width: 60%;
-        border-bottom: rgba(225, 226, 230, 1) solid 1px;
+        width: 70%;
+        border: rgba(225, 226, 230, 1) solid 0px;
         color: rgba(4, 16, 49, 1);
         @include fsp(30);
+        font-size: pem(24);
       }
       span {
-        width: 40%;
-        font-size: pem(28);
+        width: 30%;
+        font-size: pem(22);
         font-weight: normal;
+      }
+      .right {
+        width: pem(7);
+        height: pem(13);
+      }
+      .map {
+        width: pem(21);
+        height: pem(25);
       }
     }
     .form1-item-line1 {
@@ -126,10 +163,10 @@ body {
     .form1-item-bottom {
       width: pem(196);
       height: pem(241);
-      position: fixed;
-      top: pem(770);
+      position: relative;
       left: pem(498);
       content: url("https://cdn.deapsea.cn//car/form1_bottom.png");
+      border: rgb(255, 255, 255) solid 5px;
     }
   }
 }

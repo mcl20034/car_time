@@ -116,6 +116,8 @@ class Company extends React.Component {
       contacts,
       mobile,
       address,
+      lat,
+      lng,
       ksNo,
     } = this.state;
     let next_index = current_index + 1;
@@ -146,12 +148,16 @@ class Company extends React.Component {
           Toast.info("请输入手机号", 1200);
           return;
         }
-        if (mobile.length > 11 || mobile[0] != "1") {
+        if (mobile.length != 11 || mobile[0] != "1") {
           Toast.info("请输入正确的手机号", 1200);
           return;
         }
         if (!address) {
           Toast.info("请输入地址", 1200);
+          return;
+        }
+        if (!lat || !lng) {
+          Toast.info("请输入经纬度", 1200);
           return;
         }
         this.companyRegister(next_index);
@@ -216,9 +222,9 @@ class Company extends React.Component {
     });
 
     let current_index = localStorage.getItem("current_index");
-    // if (current_index) {
-    //   this.renderNext(current_index);
-    // }
+    if (current_index) {
+      this.renderNext(current_index);
+    }
 
     let brandChannel = localStorage.getItem("brandChannel");
     if (brandChannel) {
@@ -298,6 +304,7 @@ class Company extends React.Component {
       })
       .then((res) => {
         localStorage.setItem("token-key", res.data.token.union_token);
+        _this.onnext();
       })
       .catch((err) => {
         Toast.info("网络错误，请稍后再试", 1200);
@@ -305,7 +312,6 @@ class Company extends React.Component {
   };
 
   companyRegister = (current_index) => {
-    this.renderNext(current_index);
     let {
       brandChannel,
       name,
@@ -329,7 +335,10 @@ class Company extends React.Component {
         if (res.code == 0) {
           this.renderNext(current_index);
         } else {
-          Toast.info(res.msg, 1200);
+          Toast.info(res.message, 1200);
+          this.setState({
+            current_index: 1,
+          });
         }
       })
       .catch((err) => {
@@ -338,7 +347,6 @@ class Company extends React.Component {
   };
 
   ksRegister = (current_index) => {
-    this.renderNext(current_index);
     let { ksNo, opened, joined } = this.state;
     service
       .ksRegister({
@@ -350,7 +358,13 @@ class Company extends React.Component {
         if (res.code == 0) {
           this.renderNext(current_index);
         } else {
-          Toast.info(res.msg, 1200);
+          Toast.info(
+            "您提交的快手I账号信息同经销商信息不符，请核对后再次提交",
+            1200
+          );
+          this.setState({
+            current_index: 2,
+          });
         }
       })
       .catch((err) => {
@@ -414,6 +428,10 @@ class Company extends React.Component {
                   this.props.history.push("/brand");
                 }}
               />
+              <img
+                src="https://cdn.deapsea.cn//car/h5_right.png"
+                className="right"
+              />
             </div>
             <div className="form1-item">
               <span>经销商全称：</span>
@@ -460,7 +478,6 @@ class Company extends React.Component {
                 }}
               />
             </div>
-            <img className="form1-item-line1" />
             <div className="form1-item">
               <span>地址：</span>
               <input
@@ -471,6 +488,10 @@ class Company extends React.Component {
                 onClick={() => {
                   this.props.history.push("/gdmap");
                 }}
+              />
+              <img
+                src="https://cdn.deapsea.cn//car/h5_ditu.png"
+                className="map"
               />
             </div>
             <img className="form1-item-bottom" />
