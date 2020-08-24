@@ -44,12 +44,12 @@ body {
   width: pem(511);
   height: pem(664);
   content: url("https://cdn.deapsea.cn//car/car_qrcode_new.png");
-  user-select: auto;
-  pointer-events: all;
-  -webkit-touch-callout: auto;
-  -moz-user-select: all;
-  -webkit-user-select: auto;
-  -moz-user-select: all;
+  // user-select: auto;
+  // pointer-events: all;
+  // -webkit-touch-callout: auto;
+  // -moz-user-select: all;
+  // -webkit-user-select: auto;
+  // -moz-user-select: all;
 }
 
 .qr_code_close {

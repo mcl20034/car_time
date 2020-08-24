@@ -26,8 +26,7 @@
   // border-bottom-style: ridge;
   // border-bottom-width: thin;
   img {
-    width: 20px;
-    height: 20px;
+    width: 30px;
     margin-right: pem(20);
   }
 }
@@ -81,7 +80,6 @@
 .city-label-wrapper {
   display: flex;
   flex-direction: column;
-
 }
 .city-label-item {
   text-align: center;

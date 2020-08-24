@@ -11,6 +11,7 @@ body {
   flex-direction: column;
   align-items: center;
   background-image: url("https://cdn.deapsea.cn//car/bg.png");
+  background-size: 100% 100%;
 }
 
 .company-top {
@@ -142,7 +143,7 @@ body {
       }
       span {
         width: 30%;
-        font-size: pem(22);
+        font-size: pem(28);
         font-weight: normal;
       }
       .right {
@@ -199,9 +200,10 @@ body {
       justify-items: stretch;
       .form2-input {
         width: 60%;
-        border-bottom: rgba(225, 226, 230, 1) solid 1px;
+        border: rgba(225, 226, 230, 1) solid 0px;
         color: rgba(4, 16, 49, 1);
         @include fsp(30);
+        font-size: pem(24);
       }
       span {
         width: 40%;
@@ -234,7 +236,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-top: pem(200);
+  margin-top: pem(100);
 }
 
 .wx-app-content {

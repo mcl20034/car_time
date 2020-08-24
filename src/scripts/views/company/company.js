@@ -182,11 +182,11 @@ class Company extends React.Component {
     if (code) {
       this.getUser(code);
     } else {
-      this.getSign();
-      // localStorage.setItem(
-      //   "token-key",
-      //   "union_7c936c30ca75afd509f457f31fb59f19"
-      // );
+      // this.getSign();
+      localStorage.setItem(
+        "token-key",
+        "union_7c936c30ca75afd509f457f31fb59f19"
+      );
     }
 
     // 初始化微信js-sdk
@@ -268,10 +268,6 @@ class Company extends React.Component {
       .then((res) => {
         console.log(res);
         if (res.code == 0) {
-          localStorage.setItem("wx-appId", res.data.wxSign.appId);
-          localStorage.setItem("wx-timestamp", res.data.wxSign.timestamp);
-          localStorage.setItem("wx-nonceStr", res.data.wxSign.nonceStr);
-          localStorage.setItem("wx-signature", res.data.wxSign.signature);
           this.getAuthUrl();
         } else {
           Toast.info(res.msg, 1200);
@@ -339,6 +335,7 @@ class Company extends React.Component {
           this.setState({
             current_index: 1,
           });
+          localStorage.setItem("current_index", 1);
         }
       })
       .catch((err) => {
@@ -365,6 +362,7 @@ class Company extends React.Component {
           this.setState({
             current_index: 2,
           });
+          localStorage.setItem("current_index", 2);
         }
       })
       .catch((err) => {
@@ -543,7 +541,7 @@ class Company extends React.Component {
           </div>
         </div>
         <div className="company-next-button" onClick={this.onnext}>
-          <span>下一步</span>
+          下一步
         </div>
       </div>
     );
