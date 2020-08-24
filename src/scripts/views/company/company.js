@@ -10,6 +10,7 @@ import { Toast } from "../../components";
 import { forEach, get } from "lodash";
 import RadioGroup from "../appointCourses/components/radioGroup.js";
 import wx from "weixin-js-sdk";
+import LinesEllipsis from "react-lines-ellipsis";
 
 import md5 from "md5";
 @inject("rootStore")
@@ -270,7 +271,7 @@ class Company extends React.Component {
         if (res.code == 0) {
           this.getAuthUrl();
         } else {
-          Toast.info(res.msg, 1200);
+          // Toast.info(res.msg, 1200);
         }
       })
       .catch((err) => {
@@ -403,6 +404,7 @@ class Company extends React.Component {
     });
     return (
       <div className="bg">
+        <img className="bg1" src="https://cdn.deapsea.cn//car/bg.png" />
         <div className="company-top">
           <span>信息登记</span>
           <img />
@@ -478,11 +480,12 @@ class Company extends React.Component {
             </div>
             <div className="form1-item">
               <span>地址：</span>
-              <input
-                type="text"
-                placeholder="请选择地址"
-                className="form1-input"
-                defaultValue={this.state.address}
+              <LinesEllipsis
+                className="form1-lines-ellipsis"
+                text={this.state.address}
+                maxLine="2"
+                ellipsis="..."
+                trimRight
                 onClick={() => {
                   this.props.history.push("/gdmap");
                 }}

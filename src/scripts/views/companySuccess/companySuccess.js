@@ -58,7 +58,10 @@ class CompanySuccess extends React.Component {
         <img className="light" style={{ opacity: this.state.my_opacity }} />
         <img className="text" style={{ opacity: this.state.my_opacity }} />
         <div className="qr_content" style={{ display: this.state.show_qr }}>
-          <img className="qr_code_bg" />
+          <img
+            className="qr_code_bg"
+            src="https://cdn.deapsea.cn//car/car_qrcode_new.png"
+          />
           <img
             className="qr_code_close"
             onClick={() => {

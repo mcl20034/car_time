@@ -10,8 +10,14 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-image: url("https://cdn.deapsea.cn//car/bg.png");
-  background-size: 100% 100%;
+  background-image: url("https://cdn.deapsea.cn//car/bg11.png");
+  background-repeat: repeat;
+}
+
+.bg1 {
+  position: relative;
+  top: pem(0);
+  width: 100%;
 }
 
 .company-top {
@@ -140,6 +146,14 @@ body {
         color: rgba(4, 16, 49, 1);
         @include fsp(30);
         font-size: pem(24);
+      }
+      .form1-lines-ellipsis {
+        width: 70%;
+        border: rgba(225, 226, 230, 1) solid 0px;
+        color: rgba(4, 16, 49, 1);
+        @include fsp(30);
+        font-size: pem(24);
+        margin-bottom: pem(10);
       }
       span {
         width: 30%;

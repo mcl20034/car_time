@@ -11,13 +11,13 @@ body {
   flex-direction: column;
   align-items: center;
   background-image: url("https://cdn.deapsea.cn//car/last_bg_new.png");
-  background-size: cover;
+  background-size: 100vw 100vh;
 }
 
 .light {
   width: 100%;
   height: pem(295);
-  margin-top: pem(112);
+  margin-top: pem(160);
   content: url("https://cdn.deapsea.cn//car/last_light.png");
 }
 
@@ -43,13 +43,7 @@ body {
   margin-left: pem(60);
   width: pem(511);
   height: pem(664);
-  content: url("https://cdn.deapsea.cn//car/car_qrcode_new.png");
-  // user-select: auto;
-  // pointer-events: all;
-  // -webkit-touch-callout: auto;
-  // -moz-user-select: all;
-  // -webkit-user-select: auto;
-  // -moz-user-select: all;
+  // content: url("https://cdn.deapsea.cn//car/car_qrcode_new.png");
 }
 
 .qr_code_close {
