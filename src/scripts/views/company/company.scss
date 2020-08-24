@@ -15,9 +15,10 @@ body {
 }
 
 .bg1 {
-  position: relative;
-  top: pem(0);
+  position: fixed;
   width: 100%;
+  height: pem(970);
+  top: pem(150);
 }
 
 .company-top {

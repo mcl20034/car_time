@@ -480,7 +480,7 @@ class Company extends React.Component {
             </div>
             <div className="form1-item">
               <span>地址：</span>
-              <LinesEllipsis
+              {/* <LinesEllipsis
                 className="form1-lines-ellipsis"
                 text={this.state.address}
                 maxLine="2"
@@ -489,7 +489,7 @@ class Company extends React.Component {
                 onClick={() => {
                   this.props.history.push("/gdmap");
                 }}
-              />
+              /> */}
               <img
                 src="https://cdn.deapsea.cn//car/h5_ditu.png"
                 className="map"
