@@ -179,42 +179,26 @@ class Company extends React.Component {
   };
 
   componentDidMount() {
+    let token = localStorage.getItem("token-key");
     let code = this.getQueryVariable("code");
     if (code) {
-      this.getUser(code);
+      if (token == null) {
+        this.getUser(code);
+      }
     } else {
-      // this.getSign();
-      localStorage.setItem(
-        "token-key",
-        "union_7c936c30ca75afd509f457f31fb59f19"
-      );
+      this.getSign();
+      // localStorage.setItem(
+      //   "token-key",
+      //   "union_7c936c30ca75afd509f457f31fb59f19"
+      // );
     }
-
-    // 初始化微信js-sdk
-    // let appId = localStorage.getItem("wx-appId");
-    // let timestamp = localStorage.getItem("wx-timestamp");
-    // let nonceStr = localStorage.getItem("wx-nonceStr");
-    // let signature = localStorage.getItem("wx-signature");
-    // if (appId) {
-    //   this.setState({
-    //     appId,
-    //   });
-    //   wx.config({
-    //     debug: true,
-    //     appId: appId,
-    //     timestamp: timestamp,
-    //     nonceStr: nonceStr,
-    //     signature: signature,
-    //     jsApiList: [
-    //       "", // 判断当前客户端版本是否支持指定JS接口
-    //     ],
-    //     openTagList: ["wx-open-launch-weapp"],
-    //   });
-    // }
 
     let lat = localStorage.getItem("lat");
     let lng = localStorage.getItem("lng");
     let address = localStorage.getItem("address");
+    if (address == null) {
+      address = "";
+    }
 
     this.setState({
       lat: lat,
@@ -223,6 +207,9 @@ class Company extends React.Component {
     });
 
     let current_index = localStorage.getItem("current_index");
+    if (current_index == 0) {
+      current_index = 1;
+    }
     if (current_index) {
       this.renderNext(current_index);
     }
@@ -480,7 +467,7 @@ class Company extends React.Component {
             </div>
             <div className="form1-item">
               <span>地址：</span>
-              {/* <LinesEllipsis
+              <LinesEllipsis
                 className="form1-lines-ellipsis"
                 text={this.state.address}
                 maxLine="2"
@@ -489,7 +476,7 @@ class Company extends React.Component {
                 onClick={() => {
                   this.props.history.push("/gdmap");
                 }}
-              /> */}
+              />
               <img
                 src="https://cdn.deapsea.cn//car/h5_ditu.png"
                 className="map"
