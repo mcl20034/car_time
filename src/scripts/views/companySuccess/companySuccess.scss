@@ -40,20 +40,22 @@ body {
 }
 
 .qr_code_bg {
+  margin-left: pem(60);
   width: pem(511);
-  height: pem(511);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  background-image: url("https://cdn.deapsea.cn//car/qrcode_bg_new.png");
-  background-size: pem(511) pem(511);
+  height: pem(664);
+  content: url("https://cdn.deapsea.cn//car/car_qrcode_new.png");
+  user-select: auto;
+  pointer-events: all;
+  -webkit-touch-callout: auto;
+  -moz-user-select: all;
+  -webkit-user-select: auto;
+  -moz-user-select: all;
 }
 
 .qr_code_close {
-  margin-top: pem(-100);
-  margin-right: pem(10);
-  align-self: flex-end;
+  position: relative;
+  top: pem(-300);
+  right: pem(60);
   width: pem(50);
   height: pem(50);
   content: url("https://cdn.deapsea.cn//car/qrcode_bg_close.png");

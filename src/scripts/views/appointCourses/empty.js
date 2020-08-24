@@ -6,8 +6,8 @@ class Empty extends React.Component {
   }
 
   componentDidMount() {
-    // this.props.history.push("/companySuccess");
-    this.props.history.push("/company");
+    this.props.history.push("/companySuccess");
+    // this.props.history.push("/company");
   }
 
   render() {

@@ -39,16 +39,17 @@ class CompanySuccess extends React.Component {
 
   // 定时器
   iTimer = () => {
+    let that = this;
     this.timer = setInterval(() => {
       let { my_opacity } = this.state;
       my_opacity += 0.2;
       if (my_opacity > 1) {
-        my_opacity = 0;
+        clearInterval(that.timer);
       }
       this.setState({
         my_opacity: my_opacity,
       });
-    }, 1000);
+    }, 220);
   };
 
   render() {
@@ -57,15 +58,13 @@ class CompanySuccess extends React.Component {
         <img className="light" style={{ opacity: this.state.my_opacity }} />
         <img className="text" style={{ opacity: this.state.my_opacity }} />
         <div className="qr_content" style={{ display: this.state.show_qr }}>
-          <div className="qr_code_bg">
-            <img
-              className="qr_code_close"
-              onClick={() => {
-                this.setState({ show_qr: "none" });
-              }}
-            />
-            <img className="qr_code" />
-          </div>
+          <img className="qr_code_bg" />
+          <img
+            className="qr_code_close"
+            onClick={() => {
+              this.setState({ show_qr: "none" });
+            }}
+          />
         </div>
         <div className="bottom">
           <div
