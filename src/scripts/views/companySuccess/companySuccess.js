@@ -55,8 +55,14 @@ class CompanySuccess extends React.Component {
   render() {
     return (
       <div className="last_bg">
-        <img className="light" style={{ opacity: this.state.my_opacity }} />
-        <img className="text" style={{ opacity: this.state.my_opacity }} />
+        <div className="car-content">
+          <img
+            className="car"
+            src="https://cdn.deapsea.cn//car/h5/last_car.png"
+          />
+          <img className="light" style={{ opacity: this.state.my_opacity }} />
+          <img className="text" style={{ opacity: this.state.my_opacity }} />
+        </div>
         <div className="qr_content" style={{ display: this.state.show_qr }}>
           <img
             className="qr_code_bg"

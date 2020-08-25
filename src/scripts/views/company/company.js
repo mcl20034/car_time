@@ -128,7 +128,6 @@ class Company extends React.Component {
         break;
       }
       case 2: {
-        console.log(brandChannel);
         if (!brandChannel) {
           Toast.info("请输入品牌厂家", 1200);
           return;
@@ -207,10 +206,8 @@ class Company extends React.Component {
     });
 
     let current_index = localStorage.getItem("current_index");
-    if (current_index == 0) {
-      current_index = 1;
-    }
-    if (current_index) {
+    if (current_index != null && current_index >= 1) {
+      this.setState({ current_index });
       this.renderNext(current_index);
     }
 
@@ -258,7 +255,7 @@ class Company extends React.Component {
         if (res.code == 0) {
           this.getAuthUrl();
         } else {
-          // Toast.info(res.msg, 1200);
+          Toast.info(res.msg, 1200);
         }
       })
       .catch((err) => {
@@ -288,7 +285,8 @@ class Company extends React.Component {
       })
       .then((res) => {
         localStorage.setItem("token-key", res.data.token.union_token);
-        _this.onnext();
+        _this.renderNext(1);
+        _this.setState({ current_index: 1 });
       })
       .catch((err) => {
         Toast.info("网络错误，请稍后再试", 1200);
