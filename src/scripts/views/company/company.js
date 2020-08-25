@@ -86,6 +86,7 @@ class Company extends React.Component {
   };
 
   renderNext = (c_index) => {
+    console.log("renderNext", c_index);
     let { subDatas, form1_display_name, form2_display_name } = this.state;
     forEach(subDatas, (item, index) => {
       item.active = index <= c_index;
@@ -102,6 +103,7 @@ class Company extends React.Component {
       form1_display_name: form1_display_name,
       form2_display_name: form2_display_name,
       subDatas: subDatas,
+      current_index: c_index,
     });
     localStorage.setItem("current_index", c_index);
     if (c_index == 3) {
@@ -121,7 +123,8 @@ class Company extends React.Component {
       lng,
       ksNo,
     } = this.state;
-    let next_index = current_index + 1;
+    console.log("onnext", current_index);
+    let next_index = Number(current_index) + 1;
     switch (next_index) {
       case 1: {
         this.renderNext(next_index);
@@ -172,9 +175,6 @@ class Company extends React.Component {
         break;
       }
     }
-    this.setState({
-      current_index: next_index,
-    });
   };
 
   componentDidMount() {
@@ -207,8 +207,11 @@ class Company extends React.Component {
 
     let current_index = localStorage.getItem("current_index");
     if (current_index != null && current_index >= 1) {
+      console.log("componentDidMount", current_index);
       this.setState({ current_index });
       this.renderNext(current_index);
+    } else {
+      this.setState({ current_index: 0 });
     }
 
     let brandChannel = localStorage.getItem("brandChannel");
@@ -326,6 +329,10 @@ class Company extends React.Component {
       })
       .catch((err) => {
         Toast.info("网络错误，请稍后再试", 1200);
+        this.setState({
+          current_index: 1,
+        });
+        localStorage.setItem("current_index", 1);
       });
   };
 
@@ -353,6 +360,10 @@ class Company extends React.Component {
       })
       .catch((err) => {
         Toast.info("网络错误，请稍后再试", 1200);
+        this.setState({
+          current_index: 1,
+        });
+        localStorage.setItem("current_index", 1);
       });
   };
 
@@ -495,7 +506,7 @@ class Company extends React.Component {
               <input
                 type="text"
                 placeholder="请填写快手账号"
-                className="form1-input"
+                className="form2-input"
                 onInput={(e) => {
                   this.setState({
                     ksNo: e.target.value,

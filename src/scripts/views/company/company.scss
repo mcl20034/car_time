@@ -215,6 +215,8 @@ body {
       margin-top: pem(35);
       display: flex;
       justify-items: stretch;
+      align-items: center;
+      border-bottom: rgba(225, 226, 230, 1) solid 1px;
       .form2-input {
         width: 60%;
         border: rgba(225, 226, 230, 1) solid 0px;
