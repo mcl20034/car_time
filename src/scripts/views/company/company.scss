@@ -12,6 +12,7 @@ body {
   align-items: center;
   background-image: url("https://cdn.deapsea.cn//car/bg11.png");
   background-repeat: repeat;
+  overflow-x: hidden;
 }
 
 .bg1 {
@@ -83,7 +84,7 @@ body {
     text-align: center;
     line-height: pem(30);
     font-size: pem(20);
-    font-weight: bold;
+    font-weight: normal;
     border-radius: pem(100);
     background-color: rgb(0, 0, 0);
     color: white;
@@ -141,7 +142,7 @@ body {
       display: flex;
       justify-items: stretch;
       align-items: center;
-      border-bottom: rgba(225, 226, 230, 1) solid 1px;
+      border-bottom: #eeeeee solid 1px;
       .form1-input {
         width: 70%;
         border: rgba(225, 226, 230, 1) solid 0px;
@@ -151,6 +152,7 @@ body {
       }
       .form1-lines-ellipsis {
         width: 70%;
+        line-height: pem(36);
         min-height: pem(30);
         border: rgba(225, 226, 230, 1) solid 0px;
         color: rgba(4, 16, 49, 1);
@@ -168,8 +170,12 @@ body {
         height: pem(13);
       }
       .map {
+        margin-left: pem(10);
         width: pem(21);
         height: pem(25);
+      }
+      .address {
+        align-self: start;
       }
     }
     .form1-item-line1 {
@@ -216,7 +222,7 @@ body {
       display: flex;
       justify-items: stretch;
       align-items: center;
-      border-bottom: rgba(225, 226, 230, 1) solid 1px;
+      border-bottom: #eeeeee solid 1px;
       .form2-input {
         width: 60%;
         border: rgba(225, 226, 230, 1) solid 0px;
@@ -233,6 +239,19 @@ body {
         width: 60%;
         display: flex;
         justify-content: space-around;
+        .radio_item {
+          display: flex;
+          flex-direction: row;
+          font-size: pem(24);
+          font-family: Microsoft YaHei;
+          font-weight: 400;
+          color: #000000;
+          img {
+            width: pem(22);
+            height: pem(22);
+            margin-right: pem(16);
+          }
+        }
       }
     }
     .form2-item-bottom {
@@ -257,6 +276,8 @@ body {
   justify-content: center;
   margin-top: pem(100);
   z-index: 10;
+  position: fixed;
+  bottom: pem(50);
 }
 
 .wx-app-content {

@@ -28,9 +28,7 @@ class CompanySuccess extends React.Component {
     };
   }
   timer = null;
-  componentDidMount() {
-    setTimeout(this.iTimer, 0);
-  }
+  componentDidMount() {}
 
   // 组件清除时清除定时器
   componentWillUnmount() {
@@ -49,7 +47,7 @@ class CompanySuccess extends React.Component {
       this.setState({
         my_opacity: my_opacity,
       });
-    }, 220);
+    }, 350);
   };
 
   render() {
@@ -60,8 +58,19 @@ class CompanySuccess extends React.Component {
             className="car"
             src="https://cdn.deapsea.cn//car/h5/last_car.png"
           />
-          <img className="light" style={{ opacity: this.state.my_opacity }} />
-          <img className="text" style={{ opacity: this.state.my_opacity }} />
+          <img
+            className="light"
+            style={{ opacity: this.state.my_opacity }}
+            src="https://cdn.deapsea.cn//car/last_light.png"
+            onLoad={() => {
+              this.iTimer();
+            }}
+          />
+          <img
+            className="text"
+            src="https://cdn.deapsea.cn//car/last_text.png"
+            style={{ opacity: this.state.my_opacity }}
+          />
         </div>
         <div className="qr_content" style={{ display: this.state.show_qr }}>
           <img

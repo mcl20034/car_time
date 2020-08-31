@@ -55,7 +55,7 @@ program
   .option("-s, --serve", "编译后运行环境")
   .parse(process.argv);
 if (program.dev) {
-  params.publicPath = "";
+  params.publicPath = "//192.168.199.247:3333";
   (async function() {
     dev();
   })();

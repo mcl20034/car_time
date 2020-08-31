@@ -73,16 +73,28 @@ class Company extends React.Component {
     };
   }
 
-  handleRadioChange = (e, args) => {
-    this.setState({
-      opened: parseInt(e.currentTarget.value),
-    });
+  handleRadioChange = () => {
+    let { opened } = this.state;
+    this.setState(
+      {
+        opened: opened == 0 ? 1 : 0,
+      },
+      () => {
+        console.log(this.state.opened);
+      }
+    );
   };
 
-  handleJoinedRadioChange = (e, args) => {
-    this.setState({
-      joined: parseInt(e.currentTarget.value),
-    });
+  handleJoinedRadioChange = () => {
+    let { joined } = this.state;
+    this.setState(
+      {
+        joined: joined == 0 ? 1 : 0,
+      },
+      () => {
+        console.log(this.state.joined);
+      }
+    );
   };
 
   renderNext = (c_index) => {
@@ -181,9 +193,7 @@ class Company extends React.Component {
     let token = localStorage.getItem("token-key");
     let code = this.getQueryVariable("code");
     if (code) {
-      if (token == null) {
-        this.getUser(code);
-      }
+      this.getUser(code);
     } else {
       this.getSign();
       // localStorage.setItem(
@@ -206,6 +216,7 @@ class Company extends React.Component {
     });
 
     let current_index = localStorage.getItem("current_index");
+    // current_index = 2;
     if (current_index != null && current_index >= 1) {
       console.log("componentDidMount", current_index);
       this.setState({ current_index });
@@ -292,7 +303,7 @@ class Company extends React.Component {
         _this.setState({ current_index: 1 });
       })
       .catch((err) => {
-        Toast.info("网络错误，请稍后再试", 1200);
+        // Toast.info("网络错误，请稍后再试", 1200);
       });
   };
 
@@ -349,7 +360,7 @@ class Company extends React.Component {
           this.renderNext(current_index);
         } else {
           Toast.info(
-            "您提交的快手I账号信息同经销商信息不符，请核对后再次提交",
+            "您提交的快手ID/账号信息同经销商信息不符，请核对后再次提交",
             1200
           );
           this.setState({
@@ -475,7 +486,7 @@ class Company extends React.Component {
               />
             </div>
             <div className="form1-item">
-              <span>地址：</span>
+              <span className="address">地址：</span>
               <LinesEllipsis
                 className="form1-lines-ellipsis"
                 text={this.state.address}
@@ -516,25 +527,59 @@ class Company extends React.Component {
             </div>
             <div className="form2-item">
               <span>是否已开通商家蓝V:</span>
-              <RadioGroup
-                id="id"
-                name="dqhan-name"
-                isHorizontal={true}
-                items={this.state.opened_radioOptions}
-                checkedValue={this.state.opened}
-                checkChanged={this.handleRadioChange}
-              />
+              <div className="horizontal">
+                <div className="radio_item" onClick={this.handleRadioChange}>
+                  <img
+                    src={
+                      this.state.opened === 0
+                        ? "https://cdn.deapsea.cn//car/h5/radio_bg.png"
+                        : "https://cdn.deapsea.cn//car/h5/radio_checked_bg.png"
+                    }
+                  />
+                  已开通
+                </div>
+                <div className="radio_item" onClick={this.handleRadioChange}>
+                  <img
+                    src={
+                      this.state.opened === 0
+                        ? "https://cdn.deapsea.cn//car/h5/radio_checked_bg.png"
+                        : "https://cdn.deapsea.cn//car/h5/radio_bg.png"
+                    }
+                  />
+                  未开通
+                </div>
+              </div>
             </div>
             <div className="form2-item">
               <span>是否加入品牌矩阵:</span>
-              <RadioGroup
-                id="joined_id"
-                name="joined-name"
-                isHorizontal={true}
-                items={this.state.joined_radioOptions}
-                checkedValue={this.state.joined}
-                checkChanged={this.handleJoinedRadioChange}
-              />
+              <div className="horizontal">
+                <div
+                  className="radio_item"
+                  onClick={this.handleJoinedRadioChange}
+                >
+                  <img
+                    src={
+                      this.state.joined === 0
+                        ? "https://cdn.deapsea.cn//car/h5/radio_bg.png"
+                        : "https://cdn.deapsea.cn//car/h5/radio_checked_bg.png"
+                    }
+                  />
+                  已开通
+                </div>
+                <div
+                  className="radio_item"
+                  onClick={this.handleJoinedRadioChange}
+                >
+                  <img
+                    src={
+                      this.state.joined === 0
+                        ? "https://cdn.deapsea.cn//car/h5/radio_checked_bg.png"
+                        : "https://cdn.deapsea.cn//car/h5/radio_bg.png"
+                    }
+                  />
+                  未开通
+                </div>
+              </div>
             </div>
             <img className="form2-item-bottom" />
           </div>
