@@ -47,7 +47,7 @@ class CompanySuccess extends React.Component {
       this.setState({
         my_opacity: my_opacity,
       });
-    }, 350);
+    }, 250);
   };
 
   render() {

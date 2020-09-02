@@ -166,8 +166,8 @@ body {
         font-weight: normal;
       }
       .right {
-        width: pem(7);
-        height: pem(13);
+        width: pem(10);
+        height: pem(20);
       }
       .map {
         margin-left: pem(10);
@@ -261,6 +261,7 @@ body {
       top: pem(598);
       left: pem(498);
       content: url("https://cdn.deapsea.cn//car/form1_bottom.png");
+      border: rgb(255, 255, 255) solid 5px;
     }
   }
 }
