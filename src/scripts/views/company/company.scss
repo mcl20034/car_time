@@ -159,6 +159,7 @@ body {
         @include fsp(30);
         font-size: pem(24);
         margin-bottom: pem(10);
+        margin-left: pem(20);
       }
       span {
         width: 30%;
@@ -229,6 +230,7 @@ body {
         color: rgba(4, 16, 49, 1);
         @include fsp(30);
         font-size: pem(24);
+        margin-left: pem(22);
       }
       span {
         width: 40%;
